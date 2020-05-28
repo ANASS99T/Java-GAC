@@ -1,4 +1,7 @@
 # Java-GAC
+<div class="text-purple">
+  This text is purple, <a href="#" class="text-inherit">including the link</a>
+</div>
 ```dif
 JAVA PROJECT : Gestion Administrative d'un Colege\n
 <font style>`How to use GAC interface`
