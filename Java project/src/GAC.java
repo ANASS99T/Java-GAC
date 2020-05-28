@@ -631,7 +631,7 @@ public class GAC extends JFrame {
 		
 		// -------------------------- part 2 ------------------
 		
-		JRadioButton jrafficher = new JRadioButton("Afficher les abscences d'un classe non justifier");
+		JRadioButton jrafficher = new JRadioButton("Afficher les abscences d'un classe");
 		jrafficher.setBounds(5, 135, 400, 30);
 		abs.add(jrafficher);
 		
