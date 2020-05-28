@@ -86,7 +86,7 @@ public class GAC extends JFrame {
 		JMenu Help = new JMenu("Help");
 		JMenu AboutUs = new JMenu("?");
 		JMenuBar mbar = new JMenuBar();
-	
+		mbar.setBackground(Color.WHITE);
 		mbar.add(File);
 		mbar.add(Help);
 		mbar.add(AboutUs);
@@ -115,6 +115,7 @@ public class GAC extends JFrame {
 		// Welcome Panel
 		JPanel welcome = new JPanel();
 		welcome.setBounds(0, 0, 790, 450);
+		welcome.setBackground(Color.WHITE);
 		welcome.setVisible(true);
 		GroupLayout gl_welcome = new GroupLayout(welcome);
 		gl_welcome.setHorizontalGroup(
@@ -130,6 +131,7 @@ public class GAC extends JFrame {
 		// Affectation Panel
 		JPanel aff = new JPanel();
 		aff.setBounds(0, 0, 790, 450);
+		aff.setBackground(Color.WHITE);
 		aff.setVisible(false);
 		GroupLayout gl_aff = new GroupLayout(aff);
 		gl_aff.setHorizontalGroup(
@@ -144,6 +146,7 @@ public class GAC extends JFrame {
 		
 		// Absence Panel
 		JPanel abs = new JPanel();
+		abs.setBackground(Color.WHITE);
 		abs.setBounds(0, 0, 790, 450);
 		abs.setVisible(false);
 		GroupLayout gl_abs = new GroupLayout(abs);
@@ -159,6 +162,7 @@ public class GAC extends JFrame {
 		
 		// GestionEleve Panel
 		JPanel GE1 = new JPanel();
+		GE1.setBackground(Color.WHITE);
 		GE1.setBounds(0, 0, 790, 450);
 		GE1.setVisible(false);
 		GroupLayout gl_GE1 = new GroupLayout(GE1);
@@ -181,9 +185,9 @@ public class GAC extends JFrame {
 		wtitle1.setFont(new Font("Nimbus Roman No9 L", Font.BOLD, 30));
 		wtitle2.setFont(new Font("Nimbus Roman No9 L", Font.BOLD, 30));
 		wtitle3.setFont(new Font("Nimbus Roman No9 L", Font.BOLD, 30));
-		wtitle1.setBounds(235,10,350,50);
-		wtitle2.setBounds(370,60,50,50);
-		wtitle3.setBounds(170,110,500,50);
+		wtitle1.setBounds(235,5,350,50);
+		wtitle2.setBounds(370,50,50,50);
+		wtitle3.setBounds(170,95,500,50);
 		welcome.add(wtitle1);
 		welcome.add(wtitle2);
 		welcome.add(wtitle3);
@@ -198,21 +202,21 @@ public class GAC extends JFrame {
 		JLabel naff = new JLabel("Affectation ");
 		naff.setForeground(Color.GRAY);
 		naff.setFont(new Font("Liberation Serif", Font.BOLD, 22));
-		naff.setBounds(330, 190, 150, 50);
+		naff.setBounds(335, 190, 150, 50);
 		naff.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		welcome.add(naff);
 		
 		JLabel nfa = new JLabel("feuille d'absence ");
 		nfa.setForeground(Color.GRAY);
 		nfa.setFont(new Font("Liberation Serif", Font.BOLD, 22));
-		nfa.setBounds(330, 220, 210, 50);
+		nfa.setBounds(335, 220, 210, 50);
 		nfa.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		welcome.add(nfa);
 		
 		JLabel ntr = new JLabel("Gestion d'eleve");
 		ntr.setForeground(Color.GRAY);
 		ntr.setFont(new Font("Liberation Serif", Font.BOLD, 22));
-		ntr.setBounds(330, 250, 210, 50);
+		ntr.setBounds(335, 250, 210, 50);
 		ntr.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		welcome.add(ntr);
 		
@@ -225,7 +229,7 @@ public class GAC extends JFrame {
 		JLabel tuto1 = new JLabel("Voire le tutorial");
 		tuto1.setForeground(Color.GRAY);
 		tuto1.setFont(new Font("Liberation Serif", Font.BOLD, 22));
-		tuto1.setBounds(330, 330, 210, 50);
+		tuto1.setBounds(335, 330, 210, 50);
 		tuto1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		welcome.add(tuto1);
 		
@@ -294,17 +298,18 @@ public class GAC extends JFrame {
 		
 		JLabel titleLabel = new JLabel("Affectation");
 		titleLabel.setFont(new Font("Liberation Serif", Font.BOLD, 24));
-		titleLabel.setBounds(325, 10, 119, 30);
+		titleLabel.setBounds(325, 10, 200, 30);
 		aff.add(titleLabel);
 		
 		JLabel classeLabel = new JLabel("Classe :");
-		classeLabel.setBounds(10, 60, 80, 30);
+		classeLabel.setBounds(5, 60, 80, 30);
 		classeLabel.setFont(new Font("Liberation Serif", Font.BOLD, 18));
 		aff.add(classeLabel);
 		
 		JComboBox<String> classeCB = new JComboBox<String>();
 		classeCB.addItem("");
 		classeCB.setBounds(80, 60, 150, 30);
+		classeCB.setBackground(Color.white);
 		String classeQuery = "SELECT nomClasse FROM classe";
 		try {
 			Statement stm = (Statement) conn.createStatement();
@@ -317,13 +322,14 @@ public class GAC extends JFrame {
 		aff.add(classeCB);
 		
 		JLabel coursLabel = new JLabel("Cours :");
-		coursLabel.setBounds(248, 60, 80, 30);
+		coursLabel.setBounds(240, 60, 80, 30);
 		coursLabel.setFont(new Font("Liberation Serif", Font.BOLD, 18));
 		aff.add(coursLabel);
 		
 		JComboBox<String> coursCB = new JComboBox<String>();
 		coursCB.addItem("");
 		coursCB.setBounds(311, 60, 150, 30);
+		coursCB.setBackground(Color.white);
 		String coursQuery = "SELECT nomCours FROM cours";
 		try {
 			Statement stm = (Statement) conn.createStatement();
@@ -334,7 +340,7 @@ public class GAC extends JFrame {
 		aff.add(coursCB);
 		
 		JLabel materielLabel = new JLabel("Materiels :");
-		materielLabel.setBounds(488, 60, 90, 30);
+		materielLabel.setBounds(480, 60, 100, 30);
 		materielLabel.setFont(new Font("Liberation Serif", Font.BOLD, 18));
 		aff.add(materielLabel);
 		
@@ -342,6 +348,7 @@ public class GAC extends JFrame {
 		materielCB.addItem("");
 		String materielQury = "SELECT nomMateriel FROM materiel";
 		materielCB.setBounds(578, 60, 200, 30);
+		materielCB.setBackground(Color.white);
 		try {
 			Statement stm = (Statement) conn.createStatement();
 			ResultSet rs = stm.executeQuery(materielQury);
@@ -351,85 +358,87 @@ public class GAC extends JFrame {
 		
 		aff.add(materielCB);
 		
-		JLabel dateLabel = new JLabel("La date et la durée :");
-		dateLabel.setBounds(10, 116, 174, 30);
-		dateLabel.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		JLabel dateLabel = new JLabel("La date et la dur\u00e9e :");
+		dateLabel.setBounds(5, 116, 174, 30);
+		dateLabel.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		aff.add(dateLabel);
 		
 		JTextField dateTF = new JTextField("Ex: 2020-01-01");
-		dateTF.setFont(new Font("Liberation Serif", Font.PLAIN, 18));
+		dateTF.setFont(new Font("Liberation Serif", Font.PLAIN, 17));
 		dateTF.setBounds(171, 116, 170, 30);
 		aff.add(dateTF);
 		
 		JLabel timeSartLabel = new JLabel("de :");
 		timeSartLabel.setBounds(348, 116, 33, 30);
-		timeSartLabel.setFont(new Font("Liberation Serif", Font.BOLD, 18));  
+		timeSartLabel.setFont(new Font("Liberation Serif", Font.BOLD, 17));  
 		aff.add(timeSartLabel);
 		
 		JTextField timeSartTF = new JTextField("Ex: 08:00:00");
-		timeSartTF.setFont(new Font("Liberation Serif", Font.PLAIN, 18));
+		timeSartTF.setFont(new Font("Liberation Serif", Font.PLAIN,17));
 		timeSartTF.setBounds(392, 116, 170, 30);
 		aff.add(timeSartTF);
 		
-		JLabel timeEndLabel = new JLabel("à :");
-		timeEndLabel.setBounds(578, 116, 33, 30);
-		timeEndLabel.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		JLabel timeEndLabel = new JLabel("\u00e0 :");
+		timeEndLabel.setBounds(570, 116, 33, 30);
+		timeEndLabel.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		aff.add(timeEndLabel);
 		
 		JTextField timeEndTF = new JTextField("Ex: 18:00:00");
-		timeEndTF.setFont(new Font("Liberation Serif", Font.PLAIN, 18));
+		timeEndTF.setFont(new Font("Liberation Serif", Font.PLAIN, 17));
 		timeEndTF.setBounds(602, 116, 170, 30);
 		aff.add(timeEndTF);
 		
 		JButton apply = new JButton(new ImageIcon("correct.png"));
 		apply.setBounds(640, 158, 50, 30);
+		apply.setBackground(Color.white);
+		apply.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
 		aff.add(apply);
 		
 		JLabel verifier = new JLabel("--- Verification des informations ---");
 		verifier.setFont(new Font("Liberation Serif", Font.PLAIN, 22));
-		verifier.setBounds(226, 178, 323, 30);
+		verifier.setBounds(226, 178, 400, 30);
 		aff.add(verifier);
 		
-		JLabel classeLabelVr = new JLabel("Classe selectionnée : ");
-		classeLabelVr.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		JLabel classeLabelVr = new JLabel("Classe selectionn\u00e9e : ");
+		classeLabelVr.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		classeLabelVr.setBounds(10, 209, 191, 30);
 		aff.add(classeLabelVr);
 		
 		JTextField classeTFVr = new JTextField();
-		classeTFVr.setFont(new Font("Liberation Serif", Font.PLAIN, 18));
+		classeTFVr.setFont(new Font("Liberation Serif", Font.PLAIN, 17));
 		classeTFVr.setEditable(false);
 		classeTFVr.setBounds(208, 210, 323, 30);
 		aff.add(classeTFVr);
 		
-		JLabel coursLabelVr = new JLabel("Cours selectionnée : ");
-		coursLabelVr.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		JLabel coursLabelVr = new JLabel("Cours selectionn\u00e9e : ");
+		coursLabelVr.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		coursLabelVr.setBounds(10, 250, 191, 30);
 		aff.add(coursLabelVr);
 
 		JTextField coursTFVr = new JTextField();
-		coursTFVr.setFont(new Font("Liberation Serif", Font.PLAIN, 18));
+		coursTFVr.setFont(new Font("Liberation Serif", Font.PLAIN, 17));
 		coursTFVr.setEditable(false);
 		coursTFVr.setBounds(208, 250, 323, 30);
 		aff.add(coursTFVr);
 		
-		JLabel materielLabelVr = new JLabel("Materiels selectionnées : ");
-		materielLabelVr.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		JLabel materielLabelVr = new JLabel("Materiels selectionn\u00e9es : ");
+		materielLabelVr.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		materielLabelVr.setBounds(10, 290, 208, 30);
 		aff.add(materielLabelVr);
 
 		JTextField materielTFVr = new JTextField();
-		materielTFVr.setFont(new Font("Liberation Serif", Font.PLAIN, 18));
+		materielTFVr.setFont(new Font("Liberation Serif", Font.PLAIN, 17));
 		materielTFVr.setEditable(false);
 		materielTFVr.setBounds(208, 290, 323, 30);
 		aff.add(materielTFVr);
 		
-		JLabel dateLabelVr = new JLabel("date selectionnées : ");
-		dateLabelVr.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		JLabel dateLabelVr = new JLabel("date selectionn\u00e9e : ");
+		dateLabelVr.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		dateLabelVr.setBounds(10, 330, 191, 30);
 		aff.add(dateLabelVr);
 
 		JTextField dateTFVr = new JTextField();
-		dateTFVr.setFont(new Font("Liberation Serif", Font.PLAIN, 18));
+		dateTFVr.setFont(new Font("Liberation Serif", Font.PLAIN, 17));
 		dateTFVr.setEditable(false);
 		dateTFVr.setBounds(208, 330, 323, 30);
 		aff.add(dateTFVr);
@@ -441,6 +450,7 @@ public class GAC extends JFrame {
 		JButton start = new JButton("Start");
 		start.setBounds(659,390,119,30);
 		start.setEnabled(false);
+		
 		aff.add(start);
 		
 		JButton cancel = new JButton("Cancel");
@@ -472,7 +482,7 @@ public class GAC extends JFrame {
 				}else {
 					JOptionPane.showMessageDialog(App, "les materiels selectionnes est vide");
 				}
-				dateTFVr.setText("le " + dateTF.getText().toString() + " de " + timeSartTF.getText().toString() + " à " + timeEndTF.getText().toString());
+				dateTFVr.setText("le " + dateTF.getText().toString() + " de " + timeSartTF.getText().toString() + " \u00e0� " + timeEndTF.getText().toString());
 				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 				String testdate = dateTF.getText().toString();
 				try {
@@ -563,41 +573,45 @@ public class GAC extends JFrame {
 		
 		JRadioButton jrajouter = new JRadioButton("Ajouter un absent");
 		jrajouter.setBounds(5,10,250,30);
+		jrajouter.setBackground(Color.white);
 		jrajouter.setSelected(true);
 		abs.add(jrajouter);
 		
 		JLabel lblNewLabel = new JLabel("Classe :");
 		lblNewLabel.setBounds(10, 40, 69, 23);
-		lblNewLabel.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		lblNewLabel.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		abs.add(lblNewLabel);
 		
 		JLabel lblNewLabel_6 = new JLabel("Eleve :");
-		lblNewLabel_6.setBounds(221, 40, 69, 20);
-		lblNewLabel_6.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		lblNewLabel_6.setBounds(215, 40, 69, 20);
+		lblNewLabel_6.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		abs.add(lblNewLabel_6);
 		
 		JComboBox<String> classeCB1 = new JComboBox<>();
 		classeCB1.setBounds(89, 40, 94, 25);
+		classeCB1.setBackground(Color.white);
 		abs.add(classeCB1);
 		
 		JComboBox<String> eleveCB1 = new JComboBox<>();
 		eleveCB1.setBounds(278, 40, 250, 25);
+		eleveCB1.setBackground(Color.white);
 		abs.add(eleveCB1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Excuse :");
 		lblNewLabel_2.setBounds(560, 40, 100, 30);
-		lblNewLabel_2.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		lblNewLabel_2.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		abs.add(lblNewLabel_2);
 		
 		JComboBox<String> excuseCB = new JComboBox<String>();
 		excuseCB.setBounds(650, 40, 100, 30);
-		excuseCB.setFont(new Font("Liberation Serif", Font.BOLD, 16));
+		excuseCB.setFont(new Font("Liberation Serif", Font.PLAIN, 16));
 		excuseCB.setModel(new DefaultComboBoxModel<String>(new String[] {"Oui", "Non"}));
+		excuseCB.setBackground(Color.white);
 		abs.add(excuseCB);
 		
 		JLabel lblNewLabel_1 = new JLabel("Date :");
 		lblNewLabel_1.setBounds(10, 80, 50, 30);
-		lblNewLabel_1.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		lblNewLabel_1.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		abs.add(lblNewLabel_1);
 		
 		JTextField jourTF = new JTextField("Ex: 2020-01-01");
@@ -607,52 +621,56 @@ public class GAC extends JFrame {
 		
 		JLabel lblNewLabel_3 = new JLabel("Absent de :");
 		lblNewLabel_3.setBounds(250, 80, 100, 30);
-		lblNewLabel_3.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		lblNewLabel_3.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		abs.add(lblNewLabel_3);
 		
 		JTextField heureDTF = new JTextField("Ex: 08:00:00");
-		heureDTF.setFont(new Font("Liberation Serif", Font.PLAIN, 18));
+		heureDTF.setFont(new Font("Liberation Serif", Font.PLAIN, 17));
 		heureDTF.setBounds(360, 80, 150, 30);
 		abs.add(heureDTF);
 		
-		JLabel lblNewLabel_4 = new JLabel("à :");
+		JLabel lblNewLabel_4 = new JLabel("	\u00e0 :");
 		lblNewLabel_4.setBounds(515, 80, 30, 30);
-		lblNewLabel_4.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		lblNewLabel_4.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		abs.add(lblNewLabel_4);
 		
 		JTextField heureFTF = new JTextField("Ex: 12:00:00");
-		heureFTF.setFont(new Font("Liberation Serif", Font.PLAIN, 18));
+		heureFTF.setFont(new Font("Liberation Serif", Font.PLAIN, 17));
 		heureFTF.setBounds(555, 80, 150, 30);
 		abs.add(heureFTF);
 	
 		JButton applyB1 = new JButton(new ImageIcon("correct.png"));
 		applyB1.setBounds(710, 80, 50, 30);
+		applyB1.setBackground(Color.white);
+		applyB1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		abs.add(applyB1);
 		
 		// -------------------------- part 2 ------------------
 		
 		JRadioButton jrafficher = new JRadioButton("Afficher les abscences d'un classe");
+		jrafficher.setBackground(Color.white);
 		jrafficher.setBounds(5, 135, 400, 30);
 		abs.add(jrafficher);
 		
 		JLabel lblNewLabel_5 = new JLabel("Date :");
 		lblNewLabel_5.setBounds(110, 165, 60, 30);
-		lblNewLabel_5.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		lblNewLabel_5.setFont(new Font("Liberation Serif", Font.BOLD, 14));
 		abs.add(lblNewLabel_5);
 		
 		JTextField jour2 = new JTextField("Ex: 2020-01-01");
 		jour2.setBounds(180, 165, 146, 30);
-		jour2.setFont(new Font("Liberation Serif", Font.PLAIN, 18));
+		jour2.setFont(new Font("Liberation Serif", Font.PLAIN, 17));
 		jour2.setEnabled(false);
 		abs.add(jour2);
 		
 		JLabel lblNewLabel_7 = new JLabel("Classe :");
-		lblNewLabel_7.setBounds(410, 165, 60, 30);
-		lblNewLabel_7.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		lblNewLabel_7.setBounds(405, 165, 70, 30);
+		lblNewLabel_7.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		abs.add(lblNewLabel_7);
 		
 		JComboBox<String> classeCB2 = new JComboBox<>();
 		classeCB2.setBounds(500, 165, 130, 30);
+		classeCB2.setBackground(Color.white);
 		classeCB2.setModel(new DefaultComboBoxModel<String>(lesClasses()));
 		classeCB2.setEnabled(false);
 		abs.add(classeCB2);
@@ -661,6 +679,7 @@ public class GAC extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(30, 210, 730, 175);
+		
 		abs.add(scrollPane);
 
 		table = new JTable();
@@ -669,6 +688,8 @@ public class GAC extends JFrame {
 		
 		JButton applyB2 = new JButton(new ImageIcon("correct.png"));
 		applyB2.setBounds(650, 165, 50, 30);
+		applyB2.setBackground(Color.white);
+		applyB2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		applyB2.setEnabled(false);
 		abs.add(applyB2);
 		
@@ -900,61 +921,63 @@ public class GAC extends JFrame {
 		
 		JRadioButton addEleveRB = new JRadioButton("Ajouter un Eleve", true);
 		addEleveRB.setBounds(5,10,250,30);
+		addEleveRB.setBackground(Color.white);
 		GE1.add(addEleveRB);
 		
 		JLabel dataEleve = new JLabel("les donnes de l'eleve:");
-		dataEleve.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		dataEleve.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		dataEleve.setBounds(5,45,250,30);
 		GE1.add(dataEleve);
 		
 		JLabel nomELabel = new JLabel("nom :");
-		nomELabel.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		nomELabel.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		nomELabel.setBounds(20,80,100,30);
 		GE1.add(nomELabel);
 		
 		JTextField nomETF = new JTextField();
-		nomETF.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		nomETF.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		nomETF.setBounds(75,80,150,30);
 		GE1.add(nomETF);
 		
 		JLabel prenomELabel = new JLabel("prenom :");
-		prenomELabel.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		prenomELabel.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		prenomELabel.setBounds(240,80,100,30);
 		GE1.add(prenomELabel);
 		
 		JTextField prenomETF = new JTextField();
-		prenomETF.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		prenomETF.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		prenomETF.setBounds(320,80,150,30);
 		GE1.add(prenomETF);
 		
 		JLabel adressELabel = new JLabel("adresse :");
-		adressELabel.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		adressELabel.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		adressELabel.setBounds(480,80,100,30);
 		GE1.add(adressELabel);
 		
 		JTextField adrssETF = new JTextField();
-		adrssETF.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		adrssETF.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		adrssETF.setBounds(560,80,220,30);
 		GE1.add(adrssETF);
 
 		JLabel numELabel = new JLabel("numero de telephone des parents :");
-		numELabel.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		numELabel.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		numELabel.setBounds(20,115,300,30);
 		GE1.add(numELabel);
 		
 		JTextField nummETF = new JTextField();
-		nummETF.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		nummETF.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		nummETF.setBounds(320,115,150,30);
 		GE1.add(nummETF);
 		
 		JLabel classe1Label = new JLabel("Classe :");
 		classe1Label.setBounds(480,115,100,30);
-		classe1Label.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		classe1Label.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		GE1.add(classe1Label);
 	
 		JComboBox<String> classe1CB = new JComboBox<String>();
 		classe1CB.addItem("");
 		classe1CB.setBounds(560, 115, 150, 30);
+		classe1CB.setBackground(Color.white);
 		try {
 			classeQuery = "SELECT nomClasse FROM classe";
 			Statement stm = (Statement) conn.createStatement();
@@ -968,6 +991,8 @@ public class GAC extends JFrame {
 		
 		JButton apply0Classe = new JButton(new ImageIcon("correct.png"));
 		apply0Classe.setBounds(715, 115, 50, 30);
+		apply0Classe.setBackground(Color.white);
+		apply0Classe.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		GE1.add(apply0Classe);
 		
 		// ------------- Verification Text Fields -------------------
@@ -1019,16 +1044,18 @@ public class GAC extends JFrame {
 		
 		JRadioButton tranEleveRB = new JRadioButton("Transfert d'un eleve");
 		tranEleveRB.setBounds(5,150,250,30);
+		tranEleveRB.setBackground(Color.white);
 		GE1.add(tranEleveRB);
 		
 		JLabel classe2Label = new JLabel("Classe :");
 		classe2Label.setBounds(20,180,100,30);
-		classe2Label.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		classe2Label.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		GE1.add(classe2Label);
 		
 		JComboBox<String> classe2CB = new JComboBox<String>();
 		classe2CB.addItem("");
 		classe2CB.setBounds(100, 180, 200, 30);
+		classe2CB.setBackground(Color.white);
 		try {
 			Statement stm = (Statement) conn.createStatement();
 			ResultSet rs = stm.executeQuery(classeQuery);
@@ -1043,38 +1070,45 @@ public class GAC extends JFrame {
 		JTextField b = new JTextField();
 		JTextField d = new JTextField();
 		JTextField idEleveTF = new JTextField();
+		
 		JButton applyClasse = new JButton(new ImageIcon("correct.png"));
 		applyClasse.setBounds(310, 180, 50, 30);
+		applyClasse.setBackground(Color.white);
+		applyClasse.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		GE1.add(applyClasse);
 
 		
 		JLabel eleveLabel = new JLabel("Eleve :");
 		eleveLabel.setBounds(20,220,100,30);
-		eleveLabel.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		eleveLabel.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		GE1.add(eleveLabel);
 		
 		JComboBox<String> eleveCB = new JComboBox<String>();
 		
 		eleveCB.setBounds(100, 220, 200, 30);
+		eleveCB.setBackground(Color.white);
 		GE1.add(eleveCB);
 		
 		JButton apply1Classe = new JButton(new ImageIcon("correct.png"));
 		apply1Classe.setBounds(310, 220, 50, 30);
+		apply1Classe.setBackground(Color.white);
+		apply1Classe.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		GE1.add(apply1Classe);
 		
 		JLabel tranVer = new JLabel("Transfer vers :");
 		tranVer.setBounds(20,260,200,30);
-		tranVer.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		tranVer.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		GE1.add(tranVer);
 		
 		JLabel classe3Label = new JLabel("Classe :");
 		classe3Label.setBounds(20,300,100,30);
-		classe3Label.setFont(new Font("Liberation Serif", Font.BOLD, 18));
+		classe3Label.setFont(new Font("Liberation Serif", Font.BOLD, 17));
 		GE1.add(classe3Label);
 		
 		JComboBox<String> classe3CB = new JComboBox<String>();
 		classe3CB.addItem("");
 		classe3CB.setBounds(100, 300, 200, 30);
+		classe3CB.setBackground(Color.white);
 		try {
 			Statement stm = (Statement) conn.createStatement();
 			ResultSet rs = stm.executeQuery(classeQuery);
@@ -1087,6 +1121,8 @@ public class GAC extends JFrame {
 		
 		JButton apply3Classe = new JButton(new ImageIcon("correct.png"));
 		apply3Classe.setBounds(310, 300, 50, 30);
+		apply3Classe.setBackground(Color.white);
+		apply3Classe.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		GE1.add(apply3Classe);
 		
 		JButton startGE = new JButton("Start");
