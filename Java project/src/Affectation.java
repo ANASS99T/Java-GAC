@@ -109,7 +109,7 @@ public class Affectation {
 		
 		//get tous les cours disponibles dans un jour et duree donnees avec l'enseignant
 		
-			String query3 = "SELECT DISTINCT idEnseignant FROM cours WHERE cours.idCours <> ALL (SELECT idCours FROM affectation where jour = ? and heurDebut <= ? and heurFin >= ?)";
+			String query3 = "SELECT idCours, nomCours FROM cours WHERE cours.idCours <> ALL (SELECT idCours FROM affectation where jour = ? and heurDebut <= ? and heurFin >= ?)";
 			PreparedStatement st3 = conn.prepareStatement(query3);
 			st3.setString(1, date);
 			st3.setString(2, heurDebut);
@@ -118,15 +118,17 @@ public class Affectation {
 			 ArrayList<Integer> coursLibre = new ArrayList<>();
 			 System.out.println("la list des cours dispo :");
 			while(rs3.next()) {
-				coursLibre.add(getIdCours(rs3.getInt(1)));
-				System.out.println(getIdCours(rs3.getInt(1)));
+				//coursLibre.add(getIdCours(rs3.getInt(1)));
+				coursLibre.add(rs3.getInt(1));
+				System.out.println(rs3.getInt(1));
 			}
 
 		//Affectation :
 		//Scanner validation = new Scanner(System.in);
 		if (classeLibre.contains(idClasse)) {
 				if (coursLibre.contains(idCours)) {
-						if(idCours == 15 && idMateriel == 7) {
+						if(idCours == 15 && idMateriel == 7 && coursLibre.contains(14)) {
+							
 							if(salleLibre.contains(4)) {
 									System.out.println("la salle de physique TP va etre affecter a la classe : " + idClasse + " a la date: " + date + " de " + heurDebut + " a " + heurFin);
 									//int valider = validation.nextInt();
@@ -152,8 +154,9 @@ public class Affectation {
 								System.out.println("la salle de physique TP est plein, l'operation est arretee");
 								return;
 							}
+						
 						}
-						else if(idCours == 17 && idMateriel == 8) {
+						else if(idCours == 17 && idMateriel == 8 && coursLibre.contains(16)) {
 							if(salleLibre.contains(5)) {
 								System.out.println("la salle de chemie TP va etre affecter a la classe :" + idClasse + " a la date: " + date + " de " + heurDebut + " a " + heurFin );
 								//int valider = validation.nextInt();

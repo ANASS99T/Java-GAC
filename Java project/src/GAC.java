@@ -90,21 +90,30 @@ public class GAC extends JFrame {
 		mbar.add(File);
 		mbar.add(Help);
 		mbar.add(AboutUs);
-		JMenu submenuGE = new JMenu("Gestion d'eleve");
-		JMenu submenuN = new JMenu("Nouvelle");
-		JMenuItem Affect = new JMenuItem("Affectation");
-		JMenuItem Absc = new JMenuItem("Abscence");
-		JMenuItem tran = new JMenuItem("Gestion d'eleve");
+
 		JMenuItem exit = new JMenuItem("Exit");
 		JMenuItem about = new JMenuItem("About us");
 		JMenuItem help = new JMenuItem("Voir tutorial");
+		JMenu coursMenu = new JMenu("cours");
+		JMenu absenceMenu = new JMenu("absence");
+		JMenu eleveMenu = new JMenu("eleve");
+		JMenuItem Affect = new JMenuItem("Affecter un cours");
+		JMenuItem ajouterAbs = new JMenuItem("Ajouter un absent");
+		JMenuItem voirAbs = new JMenuItem("Voir la list d'absence");
+		JMenuItem ajouterEle = new JMenuItem("Ajouter un eleve");
+		JMenuItem transferEle = new JMenuItem("Transfert d'un eleve");
 		
-		File.add(submenuN);
-		File.add(submenuGE);
+		File.add(coursMenu);
+		File.add(absenceMenu);
+		File.add(eleveMenu);
 		File.add(exit);
-		submenuN.add(Affect);
-		submenuN.add(Absc);
-		submenuGE.add(tran);
+		
+		coursMenu.add(Affect);
+		absenceMenu.add(ajouterAbs);
+		absenceMenu.add(voirAbs);
+		eleveMenu.add(ajouterEle);
+		eleveMenu.add(transferEle);
+		
 		Help.add(help);
 		AboutUs.add(about);
 		App.setJMenuBar(mbar);
@@ -254,43 +263,7 @@ public class GAC extends JFrame {
 				GE1.setVisible(true);
 			}
 		});
-		tran.addActionListener(new ActionListener() {
-			
-			
-			public void actionPerformed(ActionEvent arg0) {
-				aff.setVisible(false);
-				welcome.setVisible(false);
-				abs.setVisible(false);
-				GE1.setVisible(true);
-				
-			}
-		});
-		Affect.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				aff.setVisible(true);
-				welcome.setVisible(false);
-				abs.setVisible(false);
-				GE1.setVisible(false);
-			}
-		});
-		Absc.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				aff.setVisible(false);
-				welcome.setVisible(false);
-				abs.setVisible(true);
-				GE1.setVisible(false);
-				
-			}
-		});
-		exit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				 if (JOptionPane.showConfirmDialog( App,"Fermer l'application ?","Gestion d'un colege",
-				            JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
-				            System.exit(0);
-			}
-		});
+
 		
 		// --------------------- END WELCOME PANEL ----------------------
 		
@@ -391,7 +364,7 @@ public class GAC extends JFrame {
 		JButton apply = new JButton(new ImageIcon("correct.png"));
 		apply.setBounds(640, 158, 50, 30);
 		apply.setBackground(Color.white);
-		apply.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
+		apply.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		aff.add(apply);
 		
 		JLabel verifier = new JLabel("--- Verification des informations ---");
@@ -447,14 +420,18 @@ public class GAC extends JFrame {
 		JTextField starttime = new JTextField();
 		JTextField endtime = new JTextField();
 
-		JButton start = new JButton("Start");
-		start.setBounds(659,390,119,30);
+		JButton start = new JButton(new ImageIcon("go.png"));
+		start.setBounds(720,380,50,50);
+		start.setBackground(Color.white);
+		start.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		start.setEnabled(false);
 		
 		aff.add(start);
 		
-		JButton cancel = new JButton("Cancel");
-		cancel.setBounds(528, 390, 119, 30);
+		JButton cancel = new JButton(new ImageIcon("back.png"));
+		cancel.setBounds(10, 380, 50, 50);
+		cancel.setBackground(Color.white);
+		cancel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		aff.add(cancel);
 		
 		App.getContentPane().add(aff);
@@ -462,8 +439,8 @@ public class GAC extends JFrame {
 		// ----------------- HANDLING Affectaion PANEL ---------------------
 		
 		apply.addActionListener(new ActionListener() {
-			int done = 0;
 			public void actionPerformed(ActionEvent arg0) {
+				int done = 0;
 				if(!classeCB.getSelectedItem().toString().equals("")) {
 					classeTFVr.setText(classeCB.getSelectedItem().toString());
 					done +=1;
@@ -482,7 +459,7 @@ public class GAC extends JFrame {
 				}else {
 					JOptionPane.showMessageDialog(App, "les materiels selectionnes est vide");
 				}
-				dateTFVr.setText("le " + dateTF.getText().toString() + " de " + timeSartTF.getText().toString() + " \u00e0  " + timeEndTF.getText().toString());
+				dateTFVr.setText("le " + dateTF.getText().toString() + " de " + timeSartTF.getText().toString() + " \u00e0ï¿½ " + timeEndTF.getText().toString());
 				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 				String testdate = dateTF.getText().toString();
 				try {
@@ -536,9 +513,11 @@ public class GAC extends JFrame {
 				}
 			if (done == 6) {
 				start.setEnabled(true);
+				System.out.println(done);
 			}else {
 			done = 0;
 			start.setEnabled(false);
+			System.out.println(done);
 			}
 			}
 		});
@@ -693,13 +672,17 @@ public class GAC extends JFrame {
 		applyB2.setEnabled(false);
 		abs.add(applyB2);
 		
-		JButton validerB = new JButton("Start");
-		validerB.setBounds(640, 400, 119, 30);
+		JButton validerB = new JButton(new ImageIcon("go.png"));
+		validerB.setBounds(725, 390, 50, 50);
+		validerB.setBackground(Color.white);
+		validerB.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		validerB.setEnabled(false);
 		abs.add(validerB);
 		
-		JButton cancelB = new JButton("Cancel");
-		cancelB.setBounds(508, 400, 119, 30);
+		JButton cancelB = new JButton(new ImageIcon("back.png"));
+		cancelB.setBounds(10, 390, 50, 50);
+		cancelB.setBackground(Color.white);
+		cancelB.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		abs.add(cancelB);
 		
 		App.getContentPane().add(abs);
@@ -740,6 +723,7 @@ public class GAC extends JFrame {
 					classeCB2.setEnabled(false);
 					table.setEnabled(false);
 					applyB2.setEnabled(false);
+					validerB.setEnabled(false);
 				}
 				
 			}
@@ -761,6 +745,7 @@ public class GAC extends JFrame {
 					classeCB2.setEnabled(true);
 					table.setEnabled(true);
 					applyB2.setEnabled(true);
+					validerB.setEnabled(false);
 				}
 				
 			}
@@ -995,50 +980,7 @@ public class GAC extends JFrame {
 		apply0Classe.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		GE1.add(apply0Classe);
 		
-		// ------------- Verification Text Fields -------------------
-		JTextField c = new JTextField();
-		JTextField nomVR = new JTextField();
-		JTextField prenomVR = new JTextField();
-		JTextField adressVR = new JTextField();
-		JTextField teleVR = new JTextField();
-		
-		// ------------------------------------------
-		//----------------------- HANDLING PART 1 -------------------------
-		apply0Classe.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(!classe1CB.getSelectedItem().toString().equals("")) {
-					c.setText(classe1CB.getSelectedItem().toString());
-				}else {
-					JOptionPane.showMessageDialog(App, "Erreur la classe selectionne est vide");
-				}
-				
-				if(!nomETF.getText().toString().equals("")) {
-					nomVR.setText(nomETF.getText().toString());
-				}else {
-					JOptionPane.showMessageDialog(App, "Erreur Input nom est vide");
-				}
-				
-				if(!prenomETF.getText().toString().equals("")) {
-					prenomVR.setText(prenomETF.getText().toString());
-				}else {
-					JOptionPane.showMessageDialog(App, "Erreur Input prenom est vide");
-				}
-				if(!adrssETF.getText().toString().equals("")) {
-					adressVR.setText(adrssETF.getText().toString());
-				}else {
-					JOptionPane.showMessageDialog(App, "Erreur Input adresse est vide");
-				}
-				if(!nummETF.getText().toString().equals("")) {
-					teleVR.setText(nummETF.getText().toString());
-				}else {
-					JOptionPane.showMessageDialog(App, "Erreur Input telephone est vide");
-				}
-				
-				
-				
-				
-			}
-		});
+
 		
 		//-----------------------------PART 2 ---------------------------------
 		
@@ -1125,23 +1067,89 @@ public class GAC extends JFrame {
 		apply3Classe.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		GE1.add(apply3Classe);
 		
-		JButton startGE = new JButton("Start");
-		startGE.setBounds(659,390,119,30);
+		JButton startGE = new JButton(new ImageIcon("go.png"));
+		startGE.setBounds(720,390,50,50);
+		startGE.setBackground(Color.white);
+		startGE.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
+		startGE.setEnabled(false);
 		GE1.add(startGE);
 		
-		JButton cancelGE = new JButton("Cancel");
-		cancelGE.setBounds(528, 390, 119, 30);
+		JButton cancelGE = new JButton(new ImageIcon("back.png"));
+		cancelGE.setBounds(10, 390, 50, 50);
+		cancelGE.setBackground(Color.white);
+		cancelGE.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		GE1.add(cancelGE);
 		App.getContentPane().add(GE1);
 		
+
+		
+		// ---------------- HANDLING GESTION D'ELEVE -------------------
+		
+		// ------------- Verification Text Fields -------------------
+		JTextField c = new JTextField();
+		JTextField nomVR = new JTextField();
+		JTextField prenomVR = new JTextField();
+		JTextField adressVR = new JTextField();
+		JTextField teleVR = new JTextField();
+		
+		// ------------------------------------------
+		//----------------------- HANDLING PART 1 -------------------------
+		apply0Classe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int done = 0;
+				if(!classe1CB.getSelectedItem().toString().equals("")) {
+					c.setText(classe1CB.getSelectedItem().toString());
+					done +=1;
+				}else {
+					JOptionPane.showMessageDialog(App, "Erreur la classe selectionne est vide");
+				}
+				
+				if(!nomETF.getText().toString().equals("")) {
+					nomVR.setText(nomETF.getText().toString());
+					done +=1;
+				}else {
+					JOptionPane.showMessageDialog(App, "Erreur Input nom est vide");
+				}
+				
+				if(!prenomETF.getText().toString().equals("")) {
+					prenomVR.setText(prenomETF.getText().toString());
+					done +=1;
+				}else {
+					JOptionPane.showMessageDialog(App, "Erreur Input prenom est vide");
+				}
+				if(!adrssETF.getText().toString().equals("")) {
+					adressVR.setText(adrssETF.getText().toString());
+					done +=1;
+				}else {
+					JOptionPane.showMessageDialog(App, "Erreur Input adresse est vide");
+				}
+				if(!nummETF.getText().toString().equals("")) {
+					teleVR.setText(nummETF.getText().toString());
+					done +=1;
+				}else {
+					JOptionPane.showMessageDialog(App, "Erreur Input telephone est vide");
+				}
+				if(done == 5) {
+					startGE.setEnabled(true);
+					done = 0;
+				}else {
+					startGE.setEnabled(false);
+					done = 0;
+				}
+
+			}
+		});
+		
 		// --------------------------HANDLING PART 2 --------------------------
 		
+
 		applyClasse.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				a.setText(classe2CB.getSelectedItem().toString());
 				eleveCB.removeAllItems();
+				
 				try {
 					eleveCB.addItem("");
 					String eleveQuery = "SELECT idEleve, nomEleve, prenomEleve FROM eleve WHERE idClasse = "  +Affectation.getIdClasse(a.getText().toString());
@@ -1176,7 +1184,6 @@ public class GAC extends JFrame {
 			}
 		});
 		
-		// ---------------- HANDLING GESTION D'ELEVE -------------------
 		classe2CB.setEnabled(false);
 		applyClasse.setEnabled(false);
 		tranEleveRB.setSelected(false);
@@ -1184,10 +1191,12 @@ public class GAC extends JFrame {
 		apply1Classe.setEnabled(false);
 		classe3CB.setEnabled(false);
 		apply3Classe.setEnabled(false);
-		
+	
 		ButtonGroup bg = new ButtonGroup();
 		bg.add(addEleveRB);
 		bg.add(tranEleveRB);
+		
+
 		
 		addEleveRB.addActionListener(new ActionListener() {
 			
@@ -1201,6 +1210,7 @@ public class GAC extends JFrame {
 					nummETF.setEnabled(true);
 					classe1CB.setEnabled(true);
 					apply0Classe.setEnabled(true);
+					startGE.setEnabled(false);
 					
 					classe2CB.setEnabled(false);
 					applyClasse.setEnabled(false);
@@ -1233,6 +1243,7 @@ public class GAC extends JFrame {
 					apply1Classe.setEnabled(true);
 					classe3CB.setEnabled(true);
 					apply3Classe.setEnabled(true);
+					startGE.setEnabled(true);
 				}
 				
 			}
@@ -1274,9 +1285,125 @@ public class GAC extends JFrame {
 			}
 		});
 	
+	// ------------------------ HANDLING MENUBAR ----------------------------
+		
 	
-	
-	
+		ajouterEle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				aff.setVisible(false);
+				welcome.setVisible(false);
+				abs.setVisible(false);
+				GE1.setVisible(true);
+				addEleveRB.setSelected(true);
+				
+				addEleveRB.setSelected(true);
+				nomETF.setEnabled(true);
+				prenomETF.setEnabled(true);
+				adrssETF.setEnabled(true);
+				nummETF.setEnabled(true);
+				classe1CB.setEnabled(true);
+				apply0Classe.setEnabled(true);
+				
+				classe2CB.setEnabled(false);
+				applyClasse.setEnabled(false);
+				tranEleveRB.setSelected(false);
+				eleveCB.setEnabled(false);
+				apply1Classe.setEnabled(false);
+				classe3CB.setEnabled(false);
+				apply3Classe.setEnabled(false);
+				startGE.setEnabled(false);
+				
+				
+			}
+		});
+		transferEle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				aff.setVisible(false);
+				welcome.setVisible(false);
+				abs.setVisible(false);
+				GE1.setVisible(true);
+				tranEleveRB.setSelected(true);
+				
+				addEleveRB.setSelected(false);
+				nomETF.setEnabled(false);
+				prenomETF.setEnabled(false);
+				adrssETF.setEnabled(false);
+				nummETF.setEnabled(false);
+				classe1CB.setEnabled(false);
+				apply0Classe.setEnabled(false);
+				
+				classe2CB.setEnabled(true);
+				applyClasse.setEnabled(true);
+				tranEleveRB.setSelected(true);
+				eleveCB.setEnabled(true);
+				apply1Classe.setEnabled(true);
+				classe3CB.setEnabled(true);
+				apply3Classe.setEnabled(true);
+				startGE.setEnabled(true);
+			}
+		});
+		Affect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				aff.setVisible(true);
+				welcome.setVisible(false);
+				abs.setVisible(false);
+				GE1.setVisible(false);
+			}
+		});
+		ajouterAbs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				aff.setVisible(false);
+				welcome.setVisible(false);
+				abs.setVisible(true);
+				GE1.setVisible(false);
+				jrajouter.setSelected(true);
+				
+				classeCB1.setEnabled(true);
+				eleveCB1.setEnabled(true);
+				excuseCB.setEnabled(true);
+				jourTF.setEnabled(true);
+				heureDTF.setEnabled(true);
+				heureFTF.setEnabled(true);
+				applyB1.setEnabled(true);
+				
+				jour2.setEnabled(false);
+				classeCB2.setEnabled(false);
+				table.setEnabled(false);
+				applyB2.setEnabled(false);
+				validerB.setEnabled(false);
+				
+			}
+		});
+		voirAbs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				aff.setVisible(false);
+				welcome.setVisible(false);
+				abs.setVisible(true);
+				GE1.setVisible(false);
+				jrafficher.setSelected(true);
+				
+				classeCB1.setEnabled(false);
+				eleveCB1.setEnabled(false);
+				excuseCB.setEnabled(false);
+				jourTF.setEnabled(false);
+				heureDTF.setEnabled(false);
+				heureFTF.setEnabled(false);
+				applyB1.setEnabled(false);
+				
+				jour2.setEnabled(true);
+				classeCB2.setEnabled(true);
+				table.setEnabled(true);
+				applyB2.setEnabled(true);
+				validerB.setEnabled(false);
+			}
+		});
+		exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				 if (JOptionPane.showConfirmDialog( App,"Fermer l'application ?","Gestion d'un colege",
+				            JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+				            System.exit(0);
+			}
+		});
 	
 	
 	
