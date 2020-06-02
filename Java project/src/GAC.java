@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Vector;
 
@@ -439,22 +441,26 @@ public class GAC extends JFrame {
 		// ----------------- HANDLING Affectaion PANEL ---------------------
 		
 		apply.addActionListener(new ActionListener() {
+			int done = 0;
 			public void actionPerformed(ActionEvent arg0) {
-				int done = 0;
+				
 				if(!classeCB.getSelectedItem().toString().equals("")) {
 					classeTFVr.setText(classeCB.getSelectedItem().toString());
 					done +=1;
+					System.out.println("classe done");
 				}else {
 					JOptionPane.showMessageDialog(App, "la classe selectionne est vide");
 				}
 				if(!coursCB.getSelectedItem().toString().equals("")) {
 					coursTFVr.setText(coursCB.getSelectedItem().toString());
+					System.out.println("cours done");
 					done +=1;
 				}else {
 					JOptionPane.showMessageDialog(App, "le cours selectionne est vide");
 				}
 				if(!materielCB.getSelectedItem().toString().equals("")) {
 					materielTFVr.setText(materielCB.getSelectedItem().toString());
+					System.out.println("mat done");
 					done +=1;
 				}else {
 					JOptionPane.showMessageDialog(App, "les materiels selectionnes est vide");
@@ -462,6 +468,9 @@ public class GAC extends JFrame {
 				dateTFVr.setText("le " + dateTF.getText().toString() + " de " + timeSartTF.getText().toString() + " \u00e0� " + timeEndTF.getText().toString());
 				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 				String testdate = dateTF.getText().toString();
+		    	 LocalDateTime now = LocalDateTime.now();
+		    	 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		    	 String D = dateTF.getText().toString();
 				try {
 				    Date Date = df.parse(testdate);
 				    if (!df.format(Date).equals(testdate)){
@@ -469,9 +478,14 @@ public class GAC extends JFrame {
 				    	System.out.println("Erreur sur Input Date");
 				    }
 				    else {
-				    	date.setText(dateTF.getText().toString());
-				    	System.out.println("date done");
-				    	done +=1;
+				    	 if(dtf.format(now).compareTo(D) <= 0 && "2021-07-30".compareTo(D)>= 0) {
+				    			date.setText(dateTF.getText().toString());
+						    	System.out.println("date done");
+						    	done +=1;
+				    	 }else {
+				    		 JOptionPane.showMessageDialog(App, "Verifier la date input");
+				    	 }
+				    
 				    }
 				} catch (ParseException ex) {
 					JOptionPane.showMessageDialog(App, "Erreur sur Input Date");
@@ -488,7 +502,7 @@ public class GAC extends JFrame {
 				    else {
 				    	starttime.setText(timeSartTF.getText().toString());
 				    	System.out.println("Heur debut done");
-				    	done +=1;
+				    	
 				    }
 				} catch (ParseException ex) {
 					JOptionPane.showMessageDialog(App, "Erreur sur Input Heur Debut");
@@ -505,19 +519,26 @@ public class GAC extends JFrame {
 				    else {
 				    	endtime.setText(timeEndTF.getText().toString());
 				    	System.out.println("Heur fin done");
-				    	done +=1;
+		
 				    }
+				   
 				} catch (ParseException ex) {
 					JOptionPane.showMessageDialog(App, "Erreur sur Input Heur Fin");
 				    System.out.println("Erreur sur Input Heur Fin");
 				}
-			if (done == 6) {
+				if(testTimeStart.compareTo(testTimeEnd) < 0) {
+					done +=1;
+					
+				}else {
+					JOptionPane.showMessageDialog(App, "Verifier les heurs input");
+				}
+			if (done == 5) {
 				start.setEnabled(true);
-				System.out.println(done);
+				System.out.println("done = " +done);
 			}else {
 			done = 0;
 			start.setEnabled(false);
-			System.out.println(done);
+			System.out.println("done = " + done);
 			}
 			}
 		});

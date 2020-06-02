@@ -107,13 +107,27 @@ public class Affectation {
 				System.out.println(rs2.getInt(1));
 			}
 		
-		//get tous les cours disponibles dans un jour et duree donnees avec l'enseignant
+		//get tous les cours disponibles dans un jour et duree donnees 
 		
-			String query3 = "SELECT idCours, nomCours FROM cours WHERE cours.idCours <> ALL (SELECT idCours FROM affectation where jour = ? and heurDebut <= ? and heurFin >= ?)";
+			
+			String query3 = "SELECT idCours, nomCours FROM cours WHERE cours.idCours <> ALL (SELECT idCours FROM affectation where jour = ? AND "
+					+ "((heurDebut < ? AND heurDebut < ? AND heurFin > ? AND heurFin < ?)"
+					+ " OR (heurDebut > ? AND heurDebut < ? AND heurFin > ? AND heurFin < ?)"
+					+ " OR (heurDebut > ? AND heurDebut < ? AND heurFin > ? AND heurFin > ?)))";
 			PreparedStatement st3 = conn.prepareStatement(query3);
 			st3.setString(1, date);
 			st3.setString(2, heurDebut);
 			st3.setString(3, heurFin);
+			st3.setString(4, heurDebut);
+			st3.setString(5, heurFin);
+			st3.setString(6, heurDebut);
+			st3.setString(7, heurFin);
+			st3.setString(8, heurDebut);
+			st3.setString(9, heurFin);
+			st3.setString(10, heurDebut);
+			st3.setString(11, heurFin);
+			st3.setString(12, heurDebut);
+			st3.setString(13, heurFin);
 			ResultSet rs3 = st3.executeQuery();
 			 ArrayList<Integer> coursLibre = new ArrayList<>();
 			 System.out.println("la list des cours dispo :");

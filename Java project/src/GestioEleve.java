@@ -18,6 +18,8 @@ public class GestioEleve {
 						JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
 				stm.executeUpdate(query);
 				JOptionPane.showMessageDialog(AffectationInterface.App, "l'operation est reusite");
+				String Queryele = "UPDATE classe SET nombreEleve = nombreEleve + 1 WHERE idClasse = " + idClasse;
+				stm.executeUpdate(Queryele);
 				}else {
 					JOptionPane.showMessageDialog(AffectationInterface.App, "l'operation est arrete");
 					return;
