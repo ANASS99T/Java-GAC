@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Vector;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
 
@@ -188,7 +191,26 @@ public class GAC extends JFrame {
 		GE1.setLayout(gl_GE1);
 		App.add(GE1);
 		
-		// --------------------- BEGIN WELCOME PANEL -----------------------
+		// AboutUs Panel
+
+		JPanel Aboutus = new JPanel();
+		Aboutus.setBounds(0, 0, 790, 450);
+		Aboutus.setBackground(Color.WHITE);
+		Aboutus.setVisible(false);
+		GroupLayout gl_Aboutus = new GroupLayout(Aboutus);
+		gl_Aboutus.setHorizontalGroup(
+			gl_Aboutus.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 790, Short.MAX_VALUE)
+		);
+		gl_Aboutus.setVerticalGroup(
+			gl_Aboutus.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 400, Short.MAX_VALUE)
+		);
+		Aboutus.setLayout(gl_Aboutus);
+		
+		App.add(Aboutus);
+	
+		// --------------------- START WELCOME PANEL -----------------------
 		
 		JLabel wtitle1 = new JLabel("Bienvenu sur l'interface ");
 		JLabel wtitle2 = new JLabel("de");
@@ -269,6 +291,280 @@ public class GAC extends JFrame {
 		
 		// --------------------- END WELCOME PANEL ----------------------
 		
+		// --------------------START ABOUTUS PANEL -----------------------
+		
+		JLabel imagelabel = new JLabel();
+		imagelabel.setBounds(1,0,790,445);
+		imagelabel.setIcon(new ImageIcon("AU.jpg"));
+		
+		Aboutus.add(imagelabel);
+
+		JButton D1 = new JButton();
+		D1.setBounds(15, 230, 165, 45);
+		D1.setOpaque(false);
+		D1.setContentAreaFilled(false);
+		D1.setBorderPainted(false);
+		
+		Aboutus.add(D1);
+
+		
+		JButton D2 = new JButton();
+	
+		D2.setBounds(235, 230, 100, 45);
+		D2.setOpaque(false);
+		D2.setContentAreaFilled(false);
+		D2.setBorderPainted(false);
+		Aboutus.add(D2);
+		
+		JButton D3 = new JButton();
+		
+		D3.setBounds(415, 230, 120, 45);
+		D3.setOpaque(false);
+		D3.setContentAreaFilled(false);
+		D3.setBorderPainted(false);
+		Aboutus.add(D3);
+		
+		JButton D4 = new JButton();
+		
+		D4.setBounds(615, 230, 120, 45);
+		D4.setOpaque(false);
+		D4.setContentAreaFilled(false);
+		D4.setBorderPainted(false);
+		Aboutus.add(D4);
+		
+		JLabel D1name = new JLabel("OULED BEN TAHAR ANASS");
+		D1name.setFont(new Font("Liberation Serif", Font.BOLD, 20));
+		D1name.setForeground(Color.white);
+		D1name.setBounds(125, 310, 300, 30);
+		D1name.setVisible(false);
+		imagelabel.add(D1name);
+		
+		JLabel D1adresse = new JLabel("CASABLANCA, MAROC");
+		D1adresse.setFont(new Font("Liberation Serif", Font.BOLD, 20));
+		D1adresse.setForeground(Color.white);
+		D1adresse.setBounds(125, 360, 300, 30);
+		D1adresse.setVisible(false);
+		imagelabel.add(D1adresse);
+		
+		JLabel D1phone = new JLabel("0611392835");
+		D1phone.setFont(new Font("Liberation Serif", Font.BOLD, 20));
+		D1phone.setForeground(Color.white);
+		D1phone.setBounds(485, 305, 300, 30);
+		D1phone.setVisible(false);
+		imagelabel.add(D1phone);
+		
+		JLabel D1email = new JLabel("anass.taher@gmail.com");
+		D1email.setFont(new Font("Liberation Serif", Font.BOLD, 20));
+		D1email.setForeground(Color.white);
+		D1email.setBounds(485, 360, 300, 30);
+		D1email.setVisible(false);
+		imagelabel.add(D1email);
+		
+		JLabel D2name = new JLabel("ROCHDI AZIZ");
+		D2name.setFont(new Font("Liberation Serif", Font.BOLD, 20));
+		D2name.setForeground(Color.white);
+		D2name.setBounds(125, 310, 300, 30);
+		D2name.setVisible(false);
+		imagelabel.add(D2name);
+		
+		JLabel D2adresse = new JLabel("SETTAT, MAROC");
+		D2adresse.setFont(new Font("Liberation Serif", Font.BOLD, 20));
+		D2adresse.setForeground(Color.white);
+		D2adresse.setBounds(125, 360, 300, 30);
+		D2adresse.setVisible(false);
+		imagelabel.add(D2adresse);
+		
+		JLabel D2phone = new JLabel("0613534451");
+		D2phone.setFont(new Font("Liberation Serif", Font.BOLD, 20));
+		D2phone.setForeground(Color.white);
+		D2phone.setBounds(485, 305, 300, 30);
+		D2phone.setVisible(false);
+		imagelabel.add(D2phone);
+		
+		JLabel D2email = new JLabel("aziz20rochdi@gmail.com");
+		D2email.setFont(new Font("Liberation Serif", Font.BOLD, 20));
+		D2email.setForeground(Color.white);
+		D2email.setBounds(485, 360, 300, 30);
+		D2email.setVisible(false);
+		imagelabel.add(D2email);
+		
+		JLabel D3name = new JLabel("CAMARA ABDOULAYE");
+		D3name.setFont(new Font("Liberation Serif", Font.BOLD, 20));
+		D3name.setForeground(Color.white);
+		D3name.setBounds(125, 310, 300, 30);
+		D3name.setVisible(false);
+		imagelabel.add(D3name);
+		
+		JLabel D3adresse = new JLabel("SETTAT, MAROC");
+		D3adresse.setFont(new Font("Liberation Serif", Font.BOLD, 20));
+		D3adresse.setForeground(Color.white);
+		D3adresse.setBounds(125, 360, 300, 30);
+		D3adresse.setVisible(false);
+		imagelabel.add(D3adresse);
+		
+		JLabel D3phone = new JLabel("0680093841");
+		D3phone.setFont(new Font("Liberation Serif", Font.BOLD, 20));
+		D3phone.setForeground(Color.white);
+		D3phone.setBounds(485, 305, 300, 30);
+		D3phone.setVisible(false);
+		imagelabel.add(D3phone);
+		
+		JLabel D3email = new JLabel("abdoulayecamara20004@gmail.com");
+		D3email.setFont(new Font("Liberation Serif", Font.PLAIN, 18));
+		D3email.setForeground(Color.white);
+		D3email.setBounds(485, 360, 300, 30);
+		D3email.setVisible(false);
+		imagelabel.add(D3email);
+		
+		JLabel D4name = new JLabel("ELALJA NOOREDDIBE");
+		D4name.setFont(new Font("Liberation Serif", Font.BOLD, 20));
+		D4name.setForeground(Color.white);
+		D4name.setBounds(125, 310, 300, 30);
+		D4name.setVisible(false);
+		imagelabel.add(D4name);
+		
+		JLabel D4adresse = new JLabel("BERCHIDE, MAROC");
+		D4adresse.setFont(new Font("Liberation Serif", Font.BOLD, 20));
+		D4adresse.setForeground(Color.white);
+		D4adresse.setBounds(125, 360, 300, 30);
+		D4adresse.setVisible(false);
+		imagelabel.add(D4adresse);
+		
+		JLabel D4phone = new JLabel("0668035100");
+		D4phone.setFont(new Font("Liberation Serif", Font.BOLD, 20));
+		D4phone.setForeground(Color.white);
+		D4phone.setBounds(485, 305, 300, 30);
+		D4phone.setVisible(false);
+		imagelabel.add(D4phone);
+		
+		JLabel D4email = new JLabel("noureddineelalja98@gmail.com");
+		D4email.setFont(new Font("Liberation Serif", Font.PLAIN, 18));
+		D4email.setForeground(Color.white);
+		D4email.setBounds(485, 360, 300, 30);
+		D4email.setVisible(false);
+		imagelabel.add(D4email);
+		
+		JButton backb = new JButton(new ImageIcon("back.png"));
+		backb.setBounds(733, 390, 50, 50);
+		backb.setBackground(Color.white);
+		backb.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
+		backb.setOpaque(false);
+		backb.setContentAreaFilled(false);
+		backb.setBorderPainted(false);
+		imagelabel.add(backb);
+		//-----------------HANDLING ABOUTUS PANEL ------------------------
+		D1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				D1name.setVisible(true);
+				D1adresse.setVisible(true);
+				D1phone.setVisible(true);
+				D1email.setVisible(true);
+				
+				D2name.setVisible(false);
+				D2adresse.setVisible(false);
+				D2phone.setVisible(false);
+				D2email.setVisible(false);
+				
+				D3name.setVisible(false);
+				D3adresse.setVisible(false);
+				D3phone.setVisible(false);
+				D3email.setVisible(false);
+				
+				D4name.setVisible(false);
+				D4adresse.setVisible(false);
+				D4phone.setVisible(false);
+				D4email.setVisible(false);
+			}
+		});
+		
+		D2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				D1name.setVisible(false);
+				D1adresse.setVisible(false);
+				D1phone.setVisible(false);
+				D1email.setVisible(false);
+				
+				D2name.setVisible(true);
+				D2adresse.setVisible(true);
+				D2phone.setVisible(true);
+				D2email.setVisible(true);
+				
+				D3name.setVisible(false);
+				D3adresse.setVisible(false);
+				D3phone.setVisible(false);
+				D3email.setVisible(false);
+				
+				D4name.setVisible(false);
+				D4adresse.setVisible(false);
+				D4phone.setVisible(false);
+				D4email.setVisible(false);
+			}
+		});
+		
+		D3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				D1name.setVisible(false);
+				D1adresse.setVisible(false);
+				D1phone.setVisible(false);
+				D1email.setVisible(false);
+				
+				D2name.setVisible(false);
+				D2adresse.setVisible(false);
+				D2phone.setVisible(false);
+				D2email.setVisible(false);
+				
+				D3name.setVisible(true);
+				D3adresse.setVisible(true);
+				D3phone.setVisible(true);
+				D3email.setVisible(true);
+				
+				D4name.setVisible(false);
+				D4adresse.setVisible(false);
+				D4phone.setVisible(false);
+				D4email.setVisible(false);
+			}
+		});
+		D4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				D1name.setVisible(false);
+				D1adresse.setVisible(false);
+				D1phone.setVisible(false);
+				D1email.setVisible(false);
+				
+				D2name.setVisible(false);
+				D2adresse.setVisible(false);
+				D2phone.setVisible(false);
+				D2email.setVisible(false);
+				
+				D3name.setVisible(false);
+				D3adresse.setVisible(false);
+				D3phone.setVisible(false);
+				D3email.setVisible(false);
+				
+				D4name.setVisible(true);
+				D4adresse.setVisible(true);
+				D4phone.setVisible(true);
+				D4email.setVisible(true);
+			}
+		});
+		
+		backb.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+					abs.setVisible(false);
+					aff.setVisible(false);
+					GE1.setVisible(false);
+					Aboutus.setVisible(false);
+					welcome.setVisible(true);
+			}
+		});
 		// ------------------- SATRT AFFECTATION PANEL ------------------
 		
 		JLabel titleLabel = new JLabel("Affectation");
@@ -561,6 +857,7 @@ public class GAC extends JFrame {
 					abs.setVisible(false);
 					aff.setVisible(false);
 					GE1.setVisible(false);
+					Aboutus.setVisible(false);
 					welcome.setVisible(true);
 			}
 		});
@@ -915,6 +1212,7 @@ public class GAC extends JFrame {
 					abs.setVisible(false);
 					aff.setVisible(false);
 					GE1.setVisible(false);
+					Aboutus.setVisible(false);
 					welcome.setVisible(true);
 			}
 		});
@@ -1302,6 +1600,7 @@ public class GAC extends JFrame {
 					abs.setVisible(false);
 					aff.setVisible(false);
 					GE1.setVisible(false);
+					Aboutus.setVisible(false);
 					welcome.setVisible(true);
 			}
 		});
@@ -1426,8 +1725,20 @@ public class GAC extends JFrame {
 			}
 		});
 	
-	
-	
+		
+		about.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				Aboutus.setVisible(true);
+				abs.setVisible(false);
+				aff.setVisible(false);
+				GE1.setVisible(false);
+				welcome.setVisible(false);
+				
+				
+				
+			}
+		});
 	
 	
 	

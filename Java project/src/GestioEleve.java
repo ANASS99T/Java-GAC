@@ -14,14 +14,14 @@ public class GestioEleve {
 				String query = "INSERT INTO eleve "
 						+ "(idEleve, nomEleve, prenomEleve, idClasse, adresseEleve, teleparentEleve)"
 						+ "VALUES (NULL," + "\""+nomEleve +"\""+ ", "+"\""+ prenomEleve +"\""+ ", " + idClasse + " , " + "\""+adresseEleve + "\""+" ," +"\""+ teleParent +"\""+ ")";
-				if(JOptionPane.showConfirmDialog(AffectationInterface.App, "Veuillez confirmer l'operation","Gestion d'un colege",
+				if(JOptionPane.showConfirmDialog(GAC.App, "Veuillez confirmer l'operation","Gestion d'un colege",
 						JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
 				stm.executeUpdate(query);
-				JOptionPane.showMessageDialog(AffectationInterface.App, "l'operation est reusite");
+				JOptionPane.showMessageDialog(GAC.App, "l'operation est reusite");
 				String Queryele = "UPDATE classe SET nombreEleve = nombreEleve + 1 WHERE idClasse = " + idClasse;
 				stm.executeUpdate(Queryele);
 				}else {
-					JOptionPane.showMessageDialog(AffectationInterface.App, "l'operation est arrete");
+					JOptionPane.showMessageDialog(GAC.App, "l'operation est arrete");
 					return;
 				}
 			}catch (Exception e) {
@@ -30,7 +30,7 @@ public class GestioEleve {
 			
 		}
 		else {
-			JOptionPane.showMessageDialog(AffectationInterface.App, "Cette classe est plein, l'operation est arrete");
+			JOptionPane.showMessageDialog(GAC.App, "Cette classe est plein, l'operation est arrete");
 			return;
 		}
 		
@@ -41,30 +41,30 @@ public class GestioEleve {
 		int niveauEleve = getNiveauEleve(idEleve);
 		int niveauClasse = getNiveauClasse(newIdClasse);
 		if(niveauEleve > niveauClasse) {
-			JOptionPane.showMessageDialog(AffectationInterface.App, "le niveau de classe est inferieur au niveau d'eleve");
+			JOptionPane.showMessageDialog(GAC.App, "le niveau de classe est inferieur au niveau d'eleve");
 			return;
 		}
 		else if (niveauEleve < niveauClasse) {
-			JOptionPane.showMessageDialog(AffectationInterface.App, "le niveau de classe est superieur au niveau d'eleve");
+			JOptionPane.showMessageDialog(GAC.App, "le niveau de classe est superieur au niveau d'eleve");
 		}
 		else {
 			if(nombreEleve < 45) {
 				try {
 					String query = "UPDATE eleve SET idClasse = " + newIdClasse + " WHERE idEleve = " + idEleve ;
 					Statement stm = (Statement) conn.createStatement();
-					if(JOptionPane.showConfirmDialog(AffectationInterface.App, "Veuillez confirmer l'operation","Gestion d'un colege",
+					if(JOptionPane.showConfirmDialog(GAC.App, "Veuillez confirmer l'operation","Gestion d'un colege",
 							JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
 					stm.executeUpdate(query);
-					JOptionPane.showMessageDialog(AffectationInterface.App, "l'operation est reusite");
+					JOptionPane.showMessageDialog(GAC.App, "l'operation est reusite");
 					}else {
-						JOptionPane.showMessageDialog(AffectationInterface.App, "l'operation est arrete");
+						JOptionPane.showMessageDialog(GAC.App, "l'operation est arrete");
 						return;
 					}
 				}catch (Exception e) {
 				}
 			}
 			else {
-				JOptionPane.showMessageDialog(AffectationInterface.App, "Cette classe est plein, l'operation est arrete");
+				JOptionPane.showMessageDialog(GAC.App, "Cette classe est plein, l'operation est arrete");
 				return;
 			}
 		}
