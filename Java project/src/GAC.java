@@ -8,6 +8,7 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -18,6 +19,7 @@ import java.util.Vector;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.border.Border;
 
 import com.mysql.jdbc.Statement;
 
@@ -91,11 +93,16 @@ public class GAC extends JFrame {
 		JMenu Help = new JMenu("Help");
 		JMenu AboutUs = new JMenu("?");
 		JMenuBar mbar = new JMenuBar();
+		
 		mbar.setBackground(Color.WHITE);
 		mbar.add(File);
 		mbar.add(Help);
 		mbar.add(AboutUs);
-
+		
+		File.setEnabled(false);
+		Help.setEnabled(false);
+		AboutUs.setEnabled(false);
+		
 		JMenuItem exit = new JMenuItem("Exit");
 		JMenuItem about = new JMenuItem("About us");
 		JMenuItem help = new JMenuItem("Voir tutorial");
@@ -126,11 +133,27 @@ public class GAC extends JFrame {
 		// 
 		// ------------------ INSTALL ALL PANELS ----------------------
 		
+		// Home page Panel
+		JPanel Home = new JPanel();
+		Home.setBounds(0, 0, 790, 450);
+		Home.setVisible(true);
+		GroupLayout gl_Home = new GroupLayout(Home);
+		gl_Home.setHorizontalGroup(
+			gl_Home.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 790, Short.MAX_VALUE)
+		);
+		gl_Home.setVerticalGroup(
+			gl_Home.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 400, Short.MAX_VALUE)
+		);
+		Home.setLayout(gl_Home);
+		App.add(Home);
+		
 		// Welcome Panel
 		JPanel welcome = new JPanel();
 		welcome.setBounds(0, 0, 790, 450);
 		welcome.setBackground(Color.WHITE);
-		welcome.setVisible(true);
+		welcome.setVisible(false);
 		GroupLayout gl_welcome = new GroupLayout(welcome);
 		gl_welcome.setHorizontalGroup(
 			gl_welcome.createParallelGroup(Alignment.LEADING)
@@ -209,7 +232,194 @@ public class GAC extends JFrame {
 		Aboutus.setLayout(gl_Aboutus);
 		
 		App.add(Aboutus);
+		
+		// --------------------- START HOME PAGE PANEL ----------------------
+		
+		JLabel homeImage = new JLabel();
+		homeImage.setBounds(1,0,790,445);
+		homeImage.setIcon(new ImageIcon("home.jpg"));
+		Home.add(homeImage);
+		
+		// Login interface
+		
+		
+		JLabel titlelogin = new JLabel("Log-in ...");
+		titlelogin.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 30));
+		titlelogin.setBounds(100, 185, 200, 30);
+		titlelogin.setForeground(Color.decode("#336699"));
+		homeImage.add(titlelogin);
+		
+		JLabel usernameLabel = new JLabel("User Name :");
+		usernameLabel.setFont(new Font("Brush Script MT Italic", Font.PLAIN, 30));
+		usernameLabel.setBounds(150, 237, 150, 30);
+		usernameLabel.setForeground(Color.decode("#336699"));
+		homeImage.add(usernameLabel);
+		
+		
+		JLabel passwordLabel = new JLabel("Password :");
+		passwordLabel.setFont(new Font("Brush Script MT Italic", Font.PLAIN, 30));
+		passwordLabel.setBounds(150, 288, 150, 30);
+		passwordLabel.setForeground(Color.decode("#336699"));
+		homeImage.add(passwordLabel);
+		
+		
+		JTextField usernameTf = new JTextField();
+		usernameTf.setBounds(300, 237, 170, 30);
+		homeImage.add(usernameTf);
+		
 	
+		JPasswordField passwordTF = new JPasswordField();
+		passwordTF.setBounds(300, 288, 170, 30);
+		homeImage.add(passwordTF);
+		
+		
+		JLabel signupLabel = new JLabel("Sign up");
+		signupLabel.setFont(new Font("Brush Script MT Italic", Font.PLAIN, 28));
+		signupLabel.setBounds(180,360,100,30);
+		signupLabel.setForeground(Color.decode("#336699"));
+		signupLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		homeImage.add(signupLabel);
+		
+		
+		JButton Lgo = new JButton(new ImageIcon("arrow.png"));
+		Lgo.setBounds(545,236,80,80);
+		Lgo.setOpaque(false);
+		Lgo.setContentAreaFilled(false);
+		Lgo.setBorderPainted(false);
+		homeImage.add(Lgo);
+		
+		
+		// Sing up interface
+		JLabel titlesignup = new JLabel("Sign-up ...");
+		titlesignup.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 30));
+		titlesignup.setBounds(100, 185, 200, 30);
+		titlesignup.setForeground(Color.decode("#336699"));
+		titlesignup.setVisible(false);
+		homeImage.add(titlesignup);
+		
+		JLabel SusernameL = new JLabel("User Name :");
+		SusernameL.setFont(new Font("Brush Script MT Italic", Font.PLAIN, 30));
+		SusernameL.setBounds(150, 237, 150, 30);
+		SusernameL.setForeground(Color.decode("#336699"));
+		homeImage.add(SusernameL);
+		usernameLabel.setVisible(false);
+		
+		JLabel passwordLabel1 = new JLabel("Password :");
+		passwordLabel1.setFont(new Font("Brush Script MT Italic", Font.PLAIN, 30));
+		passwordLabel1.setBounds(150, 270, 150, 30);
+		passwordLabel1.setForeground(Color.decode("#336699"));
+		homeImage.add(passwordLabel1);
+		passwordLabel1.setVisible(false);
+		
+		JLabel adminCL = new JLabel("Admin code :");
+		adminCL.setFont(new Font("Brush Script MT Italic", Font.PLAIN, 30));
+		adminCL.setBounds(150, 303, 150, 30);
+		adminCL.setForeground(Color.decode("#336699"));
+		homeImage.add(adminCL);
+		adminCL.setVisible(false);
+		
+		JTextField SusernameTf = new JTextField();
+		SusernameTf.setBounds(300, 237, 170, 30);
+		homeImage.add(SusernameTf);
+		SusernameTf.setVisible(false);
+	
+		JPasswordField SpasswordTF = new JPasswordField();
+		SpasswordTF.setBounds(300, 270, 170, 30);
+		homeImage.add(SpasswordTF);
+		SpasswordTF.setVisible(false);
+		
+		JPasswordField adminCT = new JPasswordField();
+		adminCT.setBounds(300, 303, 170, 30);
+		homeImage.add(adminCT);
+		adminCT.setVisible(false);
+		
+		JButton what = new JButton(new ImageIcon("help.png"));
+		what.setBounds(475,303,30,30);
+		what.setOpaque(false);
+		what.setContentAreaFilled(false);
+		what.setBorderPainted(false);
+		homeImage.add(what);
+		what.setVisible(false);
+		
+		JButton Sgo = new JButton(new ImageIcon("arrow.png"));
+		Sgo.setBounds(545,236,80,80);
+		Sgo.setOpaque(false);
+		Sgo.setContentAreaFilled(false);
+		Sgo.setBorderPainted(false);
+		homeImage.add(Sgo);
+		Sgo.setVisible(false);
+		
+		
+		JLabel loginLabel = new JLabel("Log-in");
+		loginLabel.setFont(new Font("Brush Script MT Italic", Font.PLAIN, 28));
+		loginLabel.setBounds(180,360,100,30);
+		loginLabel.setForeground(Color.decode("#336699"));
+		loginLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		homeImage.add(loginLabel);
+		loginLabel.setVisible(false);
+
+		
+		
+		// --------------------- HANDLING HOME PAGE PANEL part 1 -----------------
+		
+		signupLabel.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				titlesignup.setVisible(true);
+				SusernameL.setVisible(true);
+				passwordLabel1.setVisible(true);
+				adminCL.setVisible(true);
+				SusernameTf.setVisible(true);
+				SpasswordTF.setVisible(true);
+				adminCT.setVisible(true);
+				what.setVisible(true);
+				Sgo.setVisible(true);
+				loginLabel.setVisible(true);
+				
+				titlelogin.setVisible(false);
+				usernameLabel.setVisible(false);
+				usernameTf.setVisible(false);
+				passwordLabel.setVisible(false);
+				passwordTF.setVisible(false);
+				signupLabel.setVisible(false);
+				Lgo.setVisible(false);
+			
+			}
+		});
+		
+		loginLabel.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				titlesignup.setVisible(false);
+				SusernameL.setVisible(false);
+				passwordLabel1.setVisible(false);
+				adminCL.setVisible(false);
+				SusernameTf.setVisible(false);
+				SpasswordTF.setVisible(false);
+				adminCT.setVisible(false);
+				what.setVisible(false);
+				Sgo.setVisible(false);
+				loginLabel.setVisible(false);
+				
+				titlelogin.setVisible(true);
+				usernameLabel.setVisible(true);
+				usernameTf.setVisible(true);
+				passwordLabel.setVisible(true);
+				passwordTF.setVisible(true);
+				signupLabel.setVisible(true);
+				Lgo.setVisible(true);
+			
+			}
+		});
+		
+		what.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(App, "Take the Admin code from the administration");
+				
+			}
+		});
+		// --------------------- END HOME PAGE PANEL -------------------------
+				
 		// --------------------- START WELCOME PANEL -----------------------
 		
 		JLabel wtitle1 = new JLabel("Bienvenu sur l'interface ");
@@ -265,6 +475,8 @@ public class GAC extends JFrame {
 		tuto1.setBounds(335, 330, 210, 50);
 		tuto1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		welcome.add(tuto1);
+		
+		
 		
 		// ---------------------- HANDLING WELCOME PANEL -------------------------
 		naff.addMouseListener(new MouseAdapter() {
@@ -737,9 +949,9 @@ public class GAC extends JFrame {
 		// ----------------- HANDLING Affectaion PANEL ---------------------
 		
 		apply.addActionListener(new ActionListener() {
-			int done = 0;
+			
 			public void actionPerformed(ActionEvent arg0) {
-				
+				int done = 0;
 				if(!classeCB.getSelectedItem().toString().equals("")) {
 					classeTFVr.setText(classeCB.getSelectedItem().toString());
 					done +=1;
@@ -761,7 +973,7 @@ public class GAC extends JFrame {
 				}else {
 					JOptionPane.showMessageDialog(App, "les materiels selectionnes est vide");
 				}
-				dateTFVr.setText("le " + dateTF.getText().toString() + " de " + timeSartTF.getText().toString() + " \u00e0� " + timeEndTF.getText().toString());
+				dateTFVr.setText("le " + dateTF.getText().toString() + " de " + timeSartTF.getText().toString() + " \u00e0 " + timeEndTF.getText().toString());
 				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 				String testdate = dateTF.getText().toString();
 		    	 LocalDateTime now = LocalDateTime.now();
@@ -1196,8 +1408,106 @@ public class GAC extends JFrame {
 					String heurD = heureDTFS.getText().toString();
 					String heurF = heureFTFS.getText().toString();
 					
+					//GestionAbsence.AjouterAbsence(idEleve, excuse, jour, heurD, heurF);
+
+					//get les absences deja existes pour ne pas repeter la meme absence deux fois 
+					
+					boolean existe;
+					existe=false;
+					boolean hasCours=true;
+					
+					String timeFormat = "HH:mm:ss";
+					SimpleDateFormat tf = new SimpleDateFormat(timeFormat);
+					
+					try {
+						Connection conn = Utilitaire.getConnection();
+						PreparedStatement ps = conn.prepareStatement( "SELECT * FROM absence WHERE idEleve = ? AND jour = ?");
+						ps.setInt(1, idEleve);
+						ps.setString(2, jour);
+						ResultSet rs = ps.executeQuery();
+						while(rs.next()) {
+					
+						if ((tf.parse(rs.getString(3)).before(tf.parse(heurD)) || tf.parse(rs.getString(3)).equals(tf.parse(heurD))) && (tf.parse(rs.getString(4)).after(tf.parse(heurF))|| tf.parse(rs.getString(3)).equals(tf.parse(heurD)))) {
+								existe=true;
+								break;
+							}
+						else if((tf.parse(rs.getString(3)).after(tf.parse(heurD)) || tf.parse(rs.getString(3)).equals(tf.parse(heurD))) && (tf.parse(rs.getString(3)).before(tf.parse(heurF)))){
+							existe=true;
+							break;
+						}
+						else if((tf.parse(rs.getString(4)).after(tf.parse(heurD))) && (tf.parse(rs.getString(3)).before(tf.parse(heurF))|| tf.parse(rs.getString(4)).equals(tf.parse(heurF)))){
+							existe=true;
+							break;
+						}
+						}
+						PreparedStatement ps1 = conn.prepareStatement( "SELECT DISTINCT idClasse FROM affectation WHERE jour = ? AND heurDebut<=? AND heurFin>=? AND idClasse =(SELECT idClasse FROM eleve WHERE idEleve=?)");
+						ps1.setString(1, jour);
+						ps1.setString(2, heurD);
+						ps1.setString(3, heurF);
+						ps1.setInt(4, idEleve);
+						ResultSet rs1 = ps1.executeQuery();
+						if(!rs1.absolute(1))
+							hasCours=false;
+					   }
+						catch(Exception exe) {	
+						}
+					
+					if(!existe && hasCours)
 					GestionAbsence.AjouterAbsence(idEleve, excuse, jour, heurD, heurF);
-	
+					else if(!hasCours)
+					{
+						JOptionPane.showMessageDialog(App, "ce classe n'pas de cours");
+					}
+					else if(existe)
+					{
+						JOptionPane.showMessageDialog(App, "cette absenece deja existe");
+					}
+					
+					try {
+						Connection conn = Utilitaire.getConnection();
+						PreparedStatement ps = conn.prepareStatement( "SELECT * FROM absence WHERE idEleve = ? AND jour = ?");
+						ps.setInt(1, idEleve);
+						ps.setString(2, jour);
+						ResultSet rs = ps.executeQuery();
+						while(rs.next()) {
+					
+						if ((tf.parse(rs.getString(3)).before(tf.parse(heurD)) || tf.parse(rs.getString(3)).equals(tf.parse(heurD))) && (tf.parse(rs.getString(4)).after(tf.parse(heurF))|| tf.parse(rs.getString(3)).equals(tf.parse(heurD)))) {
+								existe=true;
+								break;
+							}
+						else if((tf.parse(rs.getString(3)).after(tf.parse(heurD)) || tf.parse(rs.getString(3)).equals(tf.parse(heurD))) && (tf.parse(rs.getString(3)).before(tf.parse(heurF)))){
+							existe=true;
+							break;
+						}
+						else if((tf.parse(rs.getString(4)).after(tf.parse(heurD))) && (tf.parse(rs.getString(3)).before(tf.parse(heurF))|| tf.parse(rs.getString(4)).equals(tf.parse(heurF)))){
+							existe=true;
+							break;
+						}
+						}
+						PreparedStatement ps1 = conn.prepareStatement( "SELECT DISTINCT idClasse FROM affectation WHERE jour = ? AND heurDebut<=? AND heurFin>=? AND idClasse =(SELECT idClasse FROM eleve WHERE idEleve=?)");
+						ps1.setString(1, jour);
+						ps1.setString(2, heurD);
+						ps1.setString(3, heurF);
+						ps1.setInt(4, idEleve);
+						ResultSet rs1 = ps1.executeQuery();
+						if(!rs1.absolute(1))
+							hasCours=false;
+					   }
+						catch(Exception exe) {	
+						}
+					
+					if(!existe && hasCours)
+					GestionAbsence.AjouterAbsence(idEleve, excuse, jour, heurD, heurF);
+					else if(!hasCours)
+					{
+						JOptionPane.showMessageDialog(App, "ce classe n'a pas de cours");
+					}
+					else if(existe)
+					{
+						JOptionPane.showMessageDialog(App, "cette absenece deja existe");
+					}
+					
+				
 				}
 				if(jrafficher.isSelected()) {
 					String nomClasse =classeCB2.getSelectedItem().toString();
@@ -1614,7 +1924,7 @@ public class GAC extends JFrame {
 				welcome.setVisible(false);
 				abs.setVisible(false);
 				GE1.setVisible(true);
-				addEleveRB.setSelected(true);
+				Aboutus.setVisible(false);
 				
 				addEleveRB.setSelected(true);
 				nomETF.setEnabled(true);
@@ -1643,6 +1953,7 @@ public class GAC extends JFrame {
 				abs.setVisible(false);
 				GE1.setVisible(true);
 				tranEleveRB.setSelected(true);
+				Aboutus.setVisible(false);
 				
 				addEleveRB.setSelected(false);
 				nomETF.setEnabled(false);
@@ -1668,6 +1979,7 @@ public class GAC extends JFrame {
 				welcome.setVisible(false);
 				abs.setVisible(false);
 				GE1.setVisible(false);
+				Aboutus.setVisible(false);
 			}
 		});
 		ajouterAbs.addActionListener(new ActionListener() {
@@ -1677,6 +1989,7 @@ public class GAC extends JFrame {
 				abs.setVisible(true);
 				GE1.setVisible(false);
 				jrajouter.setSelected(true);
+				Aboutus.setVisible(false);
 				
 				classeCB1.setEnabled(true);
 				eleveCB1.setEnabled(true);
@@ -1701,6 +2014,7 @@ public class GAC extends JFrame {
 				abs.setVisible(true);
 				GE1.setVisible(false);
 				jrafficher.setSelected(true);
+				Aboutus.setVisible(false);
 				
 				classeCB1.setEnabled(false);
 				eleveCB1.setEnabled(false);
@@ -1717,14 +2031,6 @@ public class GAC extends JFrame {
 				validerB.setEnabled(false);
 			}
 		});
-		exit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				 if (JOptionPane.showConfirmDialog( App,"Fermer l'application ?","Gestion d'un colege",
-				            JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
-				            System.exit(0);
-			}
-		});
-	
 		
 		about.addActionListener(new ActionListener() {
 			
@@ -1739,6 +2045,67 @@ public class GAC extends JFrame {
 				
 			}
 		});
+		
+		exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				 if (JOptionPane.showConfirmDialog( App,"Fermer l'application ?","Gestion d'un colege",
+				            JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+				            System.exit(0);
+			}
+		});
+		
+		// --------------------- HANDLING LOGIN PAGE part 2 -----------------------------------
+		
+		Lgo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String username = usernameTf.getText().toString();
+				String password = String.valueOf(passwordTF.getPassword());
+				
+				if(Login.login(username, password)) {
+					Home.setVisible(false);
+					welcome.setVisible(true);
+					File.setEnabled(true);
+					AboutUs.setEnabled(true);
+					Help.setEnabled(true);
+				
+			}
+			}
+		});
+		
+		Sgo.addActionListener(new ActionListener(){
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String username = SusernameTf.getText().toString();
+				String password = String.valueOf(SpasswordTF.getPassword());
+				String adminCode = String.valueOf(adminCT.getPassword());
+				if(Login.signUp(username, password, adminCode)) {
+					SusernameL.setVisible(false);
+					passwordLabel1.setVisible(false);
+					adminCL.setVisible(false);
+					SusernameTf.setVisible(false);
+					SpasswordTF.setVisible(false);
+					adminCT.setVisible(false);
+					what.setVisible(false);
+					Sgo.setVisible(false);
+					loginLabel.setVisible(false);
+					
+					usernameLabel.setVisible(true);
+					usernameTf.setVisible(true);
+					passwordLabel.setVisible(true);
+					passwordTF.setVisible(true);
+					signupLabel.setVisible(true);
+					Lgo.setVisible(true);
+				}
+				
+			}
+		});
+		
+	
+		
+
 	
 	
 	

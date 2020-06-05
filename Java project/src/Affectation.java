@@ -95,9 +95,8 @@ public class Affectation {
 		//get tous les classes disponibles dans un jour et duree donnees
 		
 			String query2 = "SELECT * FROM classe WHERE classe.idClasse <> ALL (SELECT  idClasse FROM affectation WHERE jour = ? AND " 
-					+ "((heurDebut < ? AND heurDebut < ? AND heurFin > ? AND heurFin < ?)"
-					+ " OR (heurDebut >= ? AND heurDebut < ? AND heurFin > ? AND heurFin <= ?)"
-					+ " OR (heurDebut > ? AND heurDebut < ? AND heurFin > ? AND heurFin > ?)))";
+					+ "(heurDebut >= ? AND heurDebut < ? AND heurFin > ? AND heurFin <= ?)";
+				
 			
 			PreparedStatement st2 = conn.prepareStatement(query2);
 			st2.setString(1, date);
@@ -105,14 +104,7 @@ public class Affectation {
 			st2.setString(3, heurFin);
 			st2.setString(4, heurDebut);
 			st2.setString(5, heurFin);
-			st2.setString(6, heurDebut);
-			st2.setString(7, heurFin);
-			st2.setString(8, heurDebut);
-			st2.setString(9, heurFin);
-			st2.setString(10, heurDebut);
-			st2.setString(11, heurFin);
-			st2.setString(12, heurDebut);
-			st2.setString(13, heurFin);
+
 			ResultSet rs2 = st2.executeQuery();
 			ArrayList<Integer> classeLibre = new ArrayList<>();
 			System.out.println("la list des les classes dispo :");
@@ -125,23 +117,14 @@ public class Affectation {
 		
 			
 			String query3 = "SELECT idCours, nomCours FROM cours WHERE cours.idCours <> ALL (SELECT idCours FROM affectation where jour = ? AND "
-					+ "((heurDebut < ? AND heurDebut < ? AND heurFin > ? AND heurFin < ?)"
-					+ " OR (heurDebut >= ? AND heurDebut < ? AND heurFin > ? AND heurFin <= ?)"
-					+ " OR (heurDebut > ? AND heurDebut < ? AND heurFin > ? AND heurFin > ?)))";
+					+ "(heurDebut >= ? AND heurDebut < ? AND heurFin > ? AND heurFin <= ?)";
 			PreparedStatement st3 = conn.prepareStatement(query3);
 			st3.setString(1, date);
 			st3.setString(2, heurDebut);
 			st3.setString(3, heurFin);
 			st3.setString(4, heurDebut);
 			st3.setString(5, heurFin);
-			st3.setString(6, heurDebut);
-			st3.setString(7, heurFin);
-			st3.setString(8, heurDebut);
-			st3.setString(9, heurFin);
-			st3.setString(10, heurDebut);
-			st3.setString(11, heurFin);
-			st3.setString(12, heurDebut);
-			st3.setString(13, heurFin);
+		
 			ResultSet rs3 = st3.executeQuery();
 			 ArrayList<Integer> coursLibre = new ArrayList<>();
 			 System.out.println("la list des cours dispo :");
@@ -158,7 +141,7 @@ public class Affectation {
 						if(idCours == 15 && idMateriel == 7 && coursLibre.contains(14)) {
 							
 							if(salleLibre.contains(4)) {
-									System.out.println("la salle de physique TP va etre affecter a la classe : " + idClasse + " a la date: " + date + " de " + heurDebut + " a " + heurFin);
+									System.out.println("la salle de physique TP va etre affecter a la classe : " + idClasse + " \u00e0 la date: " + date + " de " + heurDebut + " \u00e0 " + heurFin);
 									//int valider = validation.nextInt();
 									if(JOptionPane.showConfirmDialog(GAC.App, "La salle disponible : Physqiue TP", "Gestion d'un colege",
 											JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
@@ -170,11 +153,11 @@ public class Affectation {
 										JOptionPane.showMessageDialog(GAC.App, "insertion termine ... l'affectation reusite");
 										System.out.println("insertion termine ... et l'affectation reusite");
 									//}else if(valider == 0) {
-									//	System.out.println("L'operation est arrétée");
+									//	System.out.println("L'operation est arretee");
 									//	return;
 									}else {
 										JOptionPane.showMessageDialog(GAC.App, "l'operation est arretee");
-										System.out.println("L'operation est arrétée");
+										System.out.println("L'operation est arr\u00e9t\u00e9e");
 										return;
 									}
 							}else {
@@ -186,7 +169,7 @@ public class Affectation {
 						}
 						else if(idCours == 17 && idMateriel == 8 && coursLibre.contains(16)) {
 							if(salleLibre.contains(5)) {
-								System.out.println("la salle de chemie TP va etre affecter a la classe :" + idClasse + " a la date: " + date + " de " + heurDebut + " a " + heurFin );
+								System.out.println("la salle de chemie TP va etre affecter a la classe :" + idClasse + " \u00e0 la date: " + date + " de " + heurDebut + " \u00e0 " + heurFin );
 								//int valider = validation.nextInt();
 								if(JOptionPane.showConfirmDialog(GAC.App, "La salle disponible : chemie TP", "Gestion d'un colege",
 										JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
@@ -195,71 +178,71 @@ public class Affectation {
 											+ " VALUES (NULL, "+idCours + ", 5," + "\""+heurDebut+"\""+", " + "\""+heurFin+"\""+ ", "+ "\""+date +"\""+ ", "+idClasse + ")";
 									Statement st5 = (Statement) conn.createStatement();
 									st5.executeUpdate(insert2);
-									JOptionPane.showMessageDialog(GAC.App, "insertion terminé ... l'affectation reusite");
-									System.out.println("insertion terminé ... et l'affectation reusite");
+									JOptionPane.showMessageDialog(GAC.App, "insertion termin\u00e9 ... l'affectation reusite");
+									System.out.println("insertion termin\u00e9 ... et l'affectation reusite");
 									return;
 								//}else if(valider == 0) {
-								//	System.out.println("L'opération est arrétée");
+								//	System.out.println("L'operation est arretee");
 								//	return;
 								}else {
-									JOptionPane.showMessageDialog(GAC.App, "L'opération est arrétée");
-									System.out.println("L'opération est arrétée");
+									JOptionPane.showMessageDialog(GAC.App, "L'op\u00e9ration est arr\u00e9t\u00e9e");
+									System.out.println("L'op\u00e9ration est arr\u00e9t\u00e9e");
 									return;
 								}
 						}else {
-							JOptionPane.showMessageDialog(GAC.App, "la salle de chemie TP est plein, l'opération est arrétée");
-							System.out.println("la salle de chemie TP est plein, l'opération est arrétée");
+							JOptionPane.showMessageDialog(GAC.App, "la salle de chemie TP est plein, l'op\u00e9ration est arr\u00e9t\u00e9e");
+							System.out.println("la salle de chemie TP est plein, l'op\u00e9ration est arr\u00e9t\u00e9e");
 							return;
 							  }
 						}
 						else if(idMateriel == 1) {
 							if(salleLibre.contains(2)) {
-								System.out.println("la salle de rideaux noirs et de projecteurs 1 vidéo va etre affecter a la classe : " + idClasse + " a la date: " + date + " de " + heurDebut + " a " + heurFin );
+								System.out.println("la salle de rideaux noirs et de projecteurs 1 vid\u00e9o va etre affecter a la classe : " + idClasse + " a la date: " + date + " de " + heurDebut + " a " + heurFin );
 								//int valider = validation.nextInt();
-								if(JOptionPane.showConfirmDialog(GAC.App, "La salle disponible : vidéo 1", "Gestion d'un colege",
+								if(JOptionPane.showConfirmDialog(GAC.App, "La salle disponible : vid\u00e9o 1", "Gestion d'un colege",
 										JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
 									String insert3 = "INSERT INTO affectation "
 											+ "(idAffectation, idCours, idSalle, heurDebut, heurFin, jour, idClasse)"
 											+ " VALUES (NULL, "+idCours + ", 2," + "\""+heurDebut+"\""+", " + "\""+heurFin+ "\""+", "+ "\""+date + "\""+", "+idClasse + ")";
 									Statement st6 = (Statement) conn.createStatement();
 									st6.executeUpdate(insert3);
-									System.out.println("insertion terminé ... et l'affectation reusite");
-									JOptionPane.showMessageDialog(GAC.App, "insertion terminé ... l'affectation reusite");
+									System.out.println("insertion termin\u00e9 ... et l'affectation reusite");
+									JOptionPane.showMessageDialog(GAC.App, "insertion termin\u00e9 ... l'affectation reusite");
 									return;
 								//}else if(valider == 0) {
-								//	System.out.println("L'opération est arrétée");
+								//	System.out.println("L'operation est arretee");
 								//	return;
 								}else {
-									JOptionPane.showMessageDialog(GAC.App, "L'opération est arrétée");
-									System.out.println("L'opération est arrétée");
+									JOptionPane.showMessageDialog(GAC.App, "L'op\u00e9ration est arr\u00e9t\u00e9e");
+									System.out.println("L'op\u00e9ration est arr\u00e9t\u00e9e");
 									return;
 								}
 							}
 							else if(salleLibre.contains(3)) {
-								System.out.println("la salle de rideaux noirs et de projecteurs 2 vidéo va etre affecter a la classe: " + idClasse + " a la date: " + date + " de " + heurDebut + " a " + heurFin);
+								System.out.println("la salle de rideaux noirs et de projecteurs 2 vid\u00e9o va etre affecter a la classe: " + idClasse + " a la date: " + date + " de " + heurDebut + " a " + heurFin);
 								//int valider = validation.nextInt();
-								if(JOptionPane.showConfirmDialog(GAC.App, "La salle disponible : vidéo 2", "Gestion d'un colege",
+								if(JOptionPane.showConfirmDialog(GAC.App, "La salle disponible : vid\u00e9o 2", "Gestion d'un colege",
 										JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
 									String insert3 = "INSERT INTO affectation "
 											+ "(idAffectation, idCours, idSalle, heurDebut, heurFin, jour, idClasse)"
 											+ " VALUES (NULL, "+idCours + ", 3," + "\""+heurDebut+"\""+", " + "\""+heurFin+"\""+ ", "+ "\""+date + "\""+", "+idClasse + ")";
 									Statement st7 = (Statement) conn.createStatement();
 									st7.executeUpdate(insert3);
-									System.out.println("insertion terminé ... et l'affectation reusite");
-									JOptionPane.showMessageDialog(GAC.App, "insertion terminé ... l'affectation reusite");
+									System.out.println("insertion termin\u00e9 ... et l'affectation reusite");
+									JOptionPane.showMessageDialog(GAC.App, "insertion termin\u00e9 ... l'affectation reusite");
 									return;
 								//}else if(valider == 0) {
-								//	System.out.println("L'opération est arrétée");
+								//	System.out.println("L'operation est arretee");
 								//	return;
 								}else {
-									System.out.println("L'opération est arrétée");
-									JOptionPane.showMessageDialog(GAC.App, "L'opération est arrétée");
+									System.out.println("L'op\u00e9ration est arr\u00e9t\u00e9e");
+									JOptionPane.showMessageDialog(GAC.App, "L'op\u00e9ration est arr\u00e9t\u00e9e");
 									return;
 								}
 							}
 							else {
-								System.out.println("les salles de rideaux noirs et de projecteurs sont plein, l'opération est arrétée");
-								JOptionPane.showMessageDialog(GAC.App, "les salles de rideaux noirs et de projecteurs sont plein, l'opération est arrétée");
+								System.out.println("les salles de rideaux noirs et de projecteurs sont plein, l'op\u00e9ration est arr\u00e9t\u00e9e");
+								JOptionPane.showMessageDialog(GAC.App, "les salles de rideaux noirs et de projecteurs sont plein, l'op\u00e9ration est arr\u00e9t\u00e9e");
 								return;
 							}
 							
@@ -279,23 +262,23 @@ public class Affectation {
 										System.out.println(insert3);
 										Statement st8 = (Statement) conn.createStatement();
 										st8.executeUpdate(insert3);
-										System.out.println("insertion terminé ... et l'affectation reusite");
-										JOptionPane.showMessageDialog(GAC.App, "insertion terminé ... l'affectation reusite");
+										System.out.println("insertion termin\u00e9 ... et l'affectation reusite");
+										JOptionPane.showMessageDialog(GAC.App, "insertion termin\u00e9 ... l'affectation reusite");
 										return;
 								//	}else if(valider == 0) {
-								//		System.out.println("L'opération est arrétée");
+								//		System.out.println("L'operation est arretee");
 								//		return;
 									}else {
-										System.out.println("L'opération est arrétée");
-										JOptionPane.showMessageDialog(GAC.App, "L'opération est arrétée");
+										System.out.println("L'op\u00e9ration est arr\u00e9t\u00e9e");
+										JOptionPane.showMessageDialog(GAC.App, "L'op\u00e9ration est arr\u00e9t\u00e9e");
 										return;
 									}
 								
 								}
 							}
 							
-							System.out.println("tous les salles de capacite disponible sont plein, l'opération est arrétée ");
-							JOptionPane.showMessageDialog(GAC.App, "tous les salles de capacite disponible sont plein, l'opération est arrétée ");
+							System.out.println("tous les salles de capacite disponible sont plein, l'op\u00e9ration est arr\u00e9t\u00e9e ");
+							JOptionPane.showMessageDialog(GAC.App, "tous les salles de capacite disponible sont plein, l'op\u00e9ration est arr\u00e9t\u00e9e ");
 							return;
 						
 						}
@@ -311,17 +294,17 @@ public class Affectation {
 											+"VALUES (NULL, "+idCours + ", 1"+ ", "+ "\""+heurDebut+"\""+", " +"\""+ heurFin+"\""+ ", "+ "\""+date + "\""+", "+idClasse + ")";
 									Statement st9 = (Statement) conn.createStatement();
 									st9.executeUpdate(insert);
-									System.out.println("insertion terminé ... et l'affectation reusite");
-									JOptionPane.showMessageDialog(GAC.App, "insertion terminé ... l'affectation reusite");
+									System.out.println("insertion termin\u00e9 ... et l'affectation reusite");
+									JOptionPane.showMessageDialog(GAC.App, "insertion termin\u00e9 ... l'affectation reusite");
 									return;
 								}else {
-									System.out.println("L'opération est arrétée");
-									JOptionPane.showMessageDialog(GAC.App, "L'opération est arrétée");
+									System.out.println("L'op\u00e9ration est arr\u00e9t\u00e9e");
+									JOptionPane.showMessageDialog(GAC.App, "L'op\u00e9ration est arr\u00e9t\u00e9e");
 									return;
 								}
 									
 								}else {
-									JOptionPane.showMessageDialog(GAC.App, "La salle du sport est plein !. L'opération est arrétée");
+									JOptionPane.showMessageDialog(GAC.App, "La salle du sport est plein !. L'op\u00e9ration est arr\u00e9t\u00e9e");
 									return;
 								}
 							}

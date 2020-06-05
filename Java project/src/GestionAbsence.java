@@ -21,15 +21,15 @@ public class GestionAbsence {
 			try {
 			Statement st = (Statement) conn.createStatement();
 			st.executeUpdate(Query);
-			JOptionPane.showMessageDialog(GAC.App, "insertion terminé ... l'affectation reusite");
+			JOptionPane.showMessageDialog(GAC.App, "insertion termin\u00e9 ... l'affectation reusite");
 			return;
 			}catch (Exception e) {
-				JOptionPane.showMessageDialog(GAC.App, "L'opération est arrétée");
+				JOptionPane.showMessageDialog(GAC.App, "L'op\u00e9ration est arr\u00e9t\u00e9e");
 				return;
 			}
 		}
 		else {
-			JOptionPane.showMessageDialog(GAC.App, "L'opération est arrétée");
+			JOptionPane.showMessageDialog(GAC.App, "L'op\u00e9ration est arr\u00e9t\u00e9e");
 			return;
 		}
 		}
