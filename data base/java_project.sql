@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2020 at 08:43 PM
+-- Generation Time: Jun 05, 2020 at 09:25 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -36,18 +36,6 @@ CREATE TABLE `absence` (
   `idEleve` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `absence`
---
-
-INSERT INTO `absence` (`idAbsence`, `jour`, `heureDebut`, `heureFin`, `excuse`, `idEleve`) VALUES
-(1, '2020-05-20', '08:00:00', '10:00:00', 1, 25),
-(2, '2020-01-01', '08:00:00', '12:00:00', 1, 41),
-(3, '2020-01-01', '08:00:00', '10:00:00', 0, 1),
-(4, '2020-01-01', '08:00:00', '12:00:00', 0, 9),
-(5, '2020-05-27', '14:00:00', '16:00:00', 0, 362),
-(6, '2020-01-01', '08:00:00', '12:00:00', 0, 44);
-
 -- --------------------------------------------------------
 
 --
@@ -63,16 +51,6 @@ CREATE TABLE `affectation` (
   `jour` date NOT NULL,
   `idClasse` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `affectation`
---
-
-INSERT INTO `affectation` (`idAffectation`, `idCours`, `idSalle`, `heurDebut`, `heurFin`, `jour`, `idClasse`) VALUES
-(20, 14, 6, '08:00:00', '10:00:00', '2020-01-01', 1),
-(22, 21, 6, '10:00:00', '12:00:00', '2020-01-01', 1),
-(24, 15, 4, '08:00:00', '12:00:00', '2020-06-02', 2),
-(25, 14, 2, '09:00:00', '10:00:00', '2020-06-02', 4);
 
 -- --------------------------------------------------------
 
@@ -616,6 +594,27 @@ INSERT INTO `salle` (`idSalle`, `nomSalle`, `capaciteSalle`, `idMateriel`) VALUE
 (19, 'Normale', 30, 2),
 (20, 'Normale', 30, 2);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `idUser` int(11) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `adminCode` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`idUser`, `username`, `password`, `adminCode`) VALUES
+(1, 'admin', 'admin', 'admin'),
+(2, 'anass', '2020', NULL);
+
 --
 -- Indexes for dumped tables
 --
@@ -676,6 +675,12 @@ ALTER TABLE `salle`
   ADD KEY `idMateriel` (`idMateriel`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`idUser`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -689,7 +694,7 @@ ALTER TABLE `absence`
 -- AUTO_INCREMENT for table `affectation`
 --
 ALTER TABLE `affectation`
-  MODIFY `idAffectation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `idAffectation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `classe`
@@ -726,6 +731,12 @@ ALTER TABLE `materiel`
 --
 ALTER TABLE `salle`
   MODIFY `idSalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
