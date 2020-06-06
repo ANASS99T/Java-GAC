@@ -95,7 +95,7 @@ public class Affectation {
 		//get tous les classes disponibles dans un jour et duree donnees
 		
 			String query2 = "SELECT * FROM classe WHERE classe.idClasse <> ALL (SELECT  idClasse FROM affectation WHERE jour = ? AND " 
-					+ "(heurDebut >= ? AND heurDebut < ? AND heurFin > ? AND heurFin <= ?)";
+					+ "(heurDebut >= ? AND heurDebut < ? AND heurFin > ? AND heurFin <= ?))";
 				
 			
 			PreparedStatement st2 = conn.prepareStatement(query2);
@@ -117,7 +117,7 @@ public class Affectation {
 		
 			
 			String query3 = "SELECT idCours, nomCours FROM cours WHERE cours.idCours <> ALL (SELECT idCours FROM affectation where jour = ? AND "
-					+ "(heurDebut >= ? AND heurDebut < ? AND heurFin > ? AND heurFin <= ?)";
+					+ "(heurDebut >= ? AND heurDebut < ? AND heurFin > ? AND heurFin <= ?))";
 			PreparedStatement st3 = conn.prepareStatement(query3);
 			st3.setString(1, date);
 			st3.setString(2, heurDebut);
