@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -100,7 +102,7 @@ public class GAC extends JFrame {
 		mbar.add(AboutUs);
 		
 		File.setEnabled(false);
-		Help.setEnabled(false);
+		Help.setEnabled(true);
 		AboutUs.setEnabled(false);
 		
 		JMenuItem exit = new JMenuItem("Exit");
@@ -424,13 +426,13 @@ public class GAC extends JFrame {
 		
 		JLabel wtitle1 = new JLabel("Bienvenu sur l'interface ");
 		JLabel wtitle2 = new JLabel("de");
-		JLabel wtitle3 = new JLabel("Gestion administrative d'un colege");
+		JLabel wtitle3 = new JLabel("Gestion administrative d'un coll\u00e8ge");
 		wtitle1.setFont(new Font("Nimbus Roman No9 L", Font.BOLD, 30));
 		wtitle2.setFont(new Font("Nimbus Roman No9 L", Font.BOLD, 30));
 		wtitle3.setFont(new Font("Nimbus Roman No9 L", Font.BOLD, 30));
 		wtitle1.setBounds(235,5,350,50);
 		wtitle2.setBounds(370,50,50,50);
-		wtitle3.setBounds(170,95,500,50);
+		wtitle3.setBounds(168,95,550,50);
 		welcome.add(wtitle1);
 		welcome.add(wtitle2);
 		welcome.add(wtitle3);
@@ -500,6 +502,16 @@ public class GAC extends JFrame {
 			}
 		});
 
+		tuto.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Desktop.getDesktop().open(new File("tuto.pdf"));
+					}catch (Exception e1) {
+						JOptionPane.showMessageDialog(App, "Can't read the PDF file");
+					}
+			}
+		});
 		
 		// --------------------- END WELCOME PANEL ----------------------
 		
@@ -1456,7 +1468,7 @@ public class GAC extends JFrame {
 					GestionAbsence.AjouterAbsence(idEleve, excuse, jour, heurD, heurF);
 					else if(!hasCours)
 					{
-						JOptionPane.showMessageDialog(App, "ce classe n'pas de cours");
+						JOptionPane.showMessageDialog(App, "cette classe n'pas de cours");
 					}
 					else if(existe)
 					{
@@ -1496,16 +1508,16 @@ public class GAC extends JFrame {
 						catch(Exception exe) {	
 						}
 					
-					if(!existe && hasCours)
-					GestionAbsence.AjouterAbsence(idEleve, excuse, jour, heurD, heurF);
-					else if(!hasCours)
-					{
-						JOptionPane.showMessageDialog(App, "ce classe n'a pas de cours");
-					}
-					else if(existe)
-					{
-						JOptionPane.showMessageDialog(App, "cette absenece deja existe");
-					}
+//					if(!existe && hasCours)
+//					GestionAbsence.AjouterAbsence(idEleve, excuse, jour, heurD, heurF);
+//					else if(!hasCours)
+//					{
+//						JOptionPane.showMessageDialog(App, "cette classe n'a pas de cours");
+//					}
+//					else if(existe)
+//					{
+//						JOptionPane.showMessageDialog(App, "cette absenece deja existe");
+//					}
 					
 				
 				}
@@ -1690,11 +1702,11 @@ public class GAC extends JFrame {
 		
 		GE1.add(classe3CB);
 		
-		JButton apply3Classe = new JButton(new ImageIcon("correct.png"));
-		apply3Classe.setBounds(310, 300, 50, 30);
-		apply3Classe.setBackground(Color.white);
-		apply3Classe.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
-		GE1.add(apply3Classe);
+//		JButton apply3Classe = new JButton(new ImageIcon("correct.png"));
+//		apply3Classe.setBounds(310, 300, 50, 30);
+//		apply3Classe.setBackground(Color.white);
+//		apply3Classe.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
+//		GE1.add(apply3Classe);
 		
 		JButton startGE = new JButton(new ImageIcon("go.png"));
 		startGE.setBounds(720,390,50,50);
@@ -1807,11 +1819,11 @@ public class GAC extends JFrame {
 			}
 		});
 	
-		apply3Classe.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				d.setText(classe3CB.getSelectedItem().toString());
-			}
-		});
+//		apply3Classe.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				d.setText(classe3CB.getSelectedItem().toString());
+//			}
+//		});
 		
 		classe2CB.setEnabled(false);
 		applyClasse.setEnabled(false);
@@ -1819,7 +1831,7 @@ public class GAC extends JFrame {
 		eleveCB.setEnabled(false);
 		apply1Classe.setEnabled(false);
 		classe3CB.setEnabled(false);
-		apply3Classe.setEnabled(false);
+		//apply3Classe.setEnabled(false);
 	
 		ButtonGroup bg = new ButtonGroup();
 		bg.add(addEleveRB);
@@ -1847,7 +1859,7 @@ public class GAC extends JFrame {
 					eleveCB.setEnabled(false);
 					apply1Classe.setEnabled(false);
 					classe3CB.setEnabled(false);
-					apply3Classe.setEnabled(false);
+					//apply3Classe.setEnabled(false);
 				}
 				
 			}
@@ -1871,7 +1883,7 @@ public class GAC extends JFrame {
 					eleveCB.setEnabled(true);
 					apply1Classe.setEnabled(true);
 					classe3CB.setEnabled(true);
-					apply3Classe.setEnabled(true);
+					//apply3Classe.setEnabled(true);
 					startGE.setEnabled(true);
 				}
 				
@@ -1894,7 +1906,7 @@ public class GAC extends JFrame {
 					}
 					else if(tranEleveRB.isSelected()) {
 						System.out.println("start Button clicked in transfer eleve");
-						int newIdClasse = Affectation.getIdClasse(d.getText().toString());
+						int newIdClasse = Affectation.getIdClasse(classe3CB.getSelectedItem().toString());
 						System.out.println("id eleve : "+idEleveTF.getText().toString());
 						int idEleve =Integer.parseInt(idEleveTF.getText().toString());
 						System.out.println(idEleve);
@@ -1940,7 +1952,7 @@ public class GAC extends JFrame {
 				eleveCB.setEnabled(false);
 				apply1Classe.setEnabled(false);
 				classe3CB.setEnabled(false);
-				apply3Classe.setEnabled(false);
+				//apply3Classe.setEnabled(false);
 				startGE.setEnabled(false);
 				
 				
@@ -1969,7 +1981,7 @@ public class GAC extends JFrame {
 				eleveCB.setEnabled(true);
 				apply1Classe.setEnabled(true);
 				classe3CB.setEnabled(true);
-				apply3Classe.setEnabled(true);
+				//apply3Classe.setEnabled(true);
 				startGE.setEnabled(true);
 			}
 		});
@@ -2045,6 +2057,17 @@ public class GAC extends JFrame {
 				
 			}
 		});
+		help.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+				Desktop.getDesktop().open(new File("tuto.pdf"));
+				}catch (Exception e1) {
+					JOptionPane.showMessageDialog(App, "Can't read the PDF file");
+				}
+			}
+		});
 		
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -2103,7 +2126,67 @@ public class GAC extends JFrame {
 			}
 		});
 		
-	
+		
+	usernameTf.addKeyListener(new KeyListener() {
+		
+		@Override
+		public void keyTyped(KeyEvent arg0) {
+		
+			
+		}
+		
+		@Override
+		public void keyReleased(KeyEvent arg0) {
+			
+		}
+		@Override
+		public void keyPressed(KeyEvent e) {
+
+			if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+				String username = usernameTf.getText().toString();
+				String password = String.valueOf(passwordTF.getPassword());
+				
+				if(Login.login(username, password)) {
+					Home.setVisible(false);
+					welcome.setVisible(true);
+					File.setEnabled(true);
+					AboutUs.setEnabled(true);
+					Help.setEnabled(true);
+			}
+			}
+		
+		}
+	});
+	passwordTF.addKeyListener(new KeyListener() {
+		
+		@Override
+		public void keyTyped(KeyEvent arg0) {
+		
+			
+		}
+		
+		@Override
+		public void keyReleased(KeyEvent arg0) {
+			
+		}
+		@Override
+		public void keyPressed(KeyEvent e) {
+
+			if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+				String username = usernameTf.getText().toString();
+				String password = String.valueOf(passwordTF.getPassword());
+				
+				if(Login.login(username, password)) {
+					Home.setVisible(false);
+					welcome.setVisible(true);
+					File.setEnabled(true);
+					AboutUs.setEnabled(true);
+					Help.setEnabled(true);
+			}
+			}
+		
+		}
+	});
 		
 
 	
