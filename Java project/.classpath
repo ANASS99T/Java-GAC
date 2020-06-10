@@ -6,6 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="images"/>
 	<classpathentry kind="lib" path="lib/com.mysql.jdbc_5.1.5.jar"/>
 	<classpathentry kind="lib" path="jar-Files/rs2xml.jar"/>
 	<classpathentry kind="lib" path="jar-Files/mysql-connector-java-5.0.5-bin.jar"/>

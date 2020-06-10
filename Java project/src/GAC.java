@@ -31,7 +31,7 @@ public class GAC extends JFrame {
 
 	static Connection conn = Utilitaire.getConnection();
 	static JFrame App = new JFrame("Gestion d'un colege");
-	ImageIcon icon = new ImageIcon("school.png");
+	ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("school.png"));
 	
 	static String selectedClasse;
 	private JTable table;
@@ -240,7 +240,8 @@ public class GAC extends JFrame {
 		
 		JLabel homeImage = new JLabel();
 		homeImage.setBounds(1,0,790,445);
-		homeImage.setIcon(new ImageIcon("home.jpg"));
+//		homeImage.setIcon(new ImageIcon("home.jpg"));
+		homeImage.setIcon(new ImageIcon(getClass().getClassLoader().getResource("home.jpg")));
 		Home.add(homeImage);
 		
 		// Login interface
@@ -284,7 +285,7 @@ public class GAC extends JFrame {
 		homeImage.add(signupLabel);
 		
 		
-		JButton Lgo = new JButton(new ImageIcon("arrow.png"));
+		JButton Lgo = new JButton(new ImageIcon(getClass().getClassLoader().getResource("arrow.png")));
 		Lgo.setBounds(545,236,80,80);
 		Lgo.setOpaque(false);
 		Lgo.setContentAreaFilled(false);
@@ -336,7 +337,7 @@ public class GAC extends JFrame {
 		homeImage.add(adminCT);
 		adminCT.setVisible(false);
 		
-		JButton what = new JButton(new ImageIcon("help.png"));
+		JButton what = new JButton(new ImageIcon(getClass().getClassLoader().getResource("help.png")));
 		what.setBounds(475,303,30,30);
 		what.setOpaque(false);
 		what.setContentAreaFilled(false);
@@ -344,7 +345,7 @@ public class GAC extends JFrame {
 		homeImage.add(what);
 		what.setVisible(false);
 		
-		JButton Sgo = new JButton(new ImageIcon("arrow.png"));
+		JButton Sgo = new JButton(new ImageIcon(getClass().getClassLoader().getResource("arrow.png")));
 		Sgo.setBounds(545,236,80,80);
 		Sgo.setOpaque(false);
 		Sgo.setContentAreaFilled(false);
@@ -503,7 +504,7 @@ public class GAC extends JFrame {
 			}
 		});
 
-		tuto.addMouseListener(new MouseAdapter() {
+		tuto1.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e) {
 				try {
@@ -520,7 +521,7 @@ public class GAC extends JFrame {
 		
 		JLabel imagelabel = new JLabel();
 		imagelabel.setBounds(1,0,790,445);
-		imagelabel.setIcon(new ImageIcon("AU.jpg"));
+		imagelabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("AU.jpg")));
 		
 		Aboutus.add(imagelabel);
 
@@ -669,7 +670,7 @@ public class GAC extends JFrame {
 		D4email.setVisible(false);
 		imagelabel.add(D4email);
 		
-		JButton backb = new JButton(new ImageIcon("back.png"));
+		JButton backb = new JButton(new ImageIcon(getClass().getClassLoader().getResource("back.png")));
 		backb.setBounds(733, 390, 50, 50);
 		backb.setBackground(Color.white);
 		backb.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
@@ -884,7 +885,7 @@ public class GAC extends JFrame {
 		timeEndTF.setBounds(602, 116, 170, 30);
 		aff.add(timeEndTF);
 		
-		JButton apply = new JButton(new ImageIcon("correct.png"));
+		JButton apply = new JButton(new ImageIcon(getClass().getClassLoader().getResource("correct.png")));
 		apply.setBounds(640, 158, 50, 30);
 		apply.setBackground(Color.white);
 		apply.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
@@ -943,7 +944,7 @@ public class GAC extends JFrame {
 		JTextField starttime = new JTextField();
 		JTextField endtime = new JTextField();
 
-		JButton start = new JButton(new ImageIcon("go.png"));
+		JButton start = new JButton(new ImageIcon(getClass().getClassLoader().getResource("go.png")));
 		start.setBounds(720,380,50,50);
 		start.setBackground(Color.white);
 		start.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
@@ -951,7 +952,7 @@ public class GAC extends JFrame {
 		
 		aff.add(start);
 		
-		JButton cancel = new JButton(new ImageIcon("back.png"));
+		JButton cancel = new JButton(new ImageIcon(getClass().getClassLoader().getResource("back.png")));
 		cancel.setBounds(10, 380, 50, 50);
 		cancel.setBackground(Color.white);
 		cancel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
@@ -1161,7 +1162,7 @@ public class GAC extends JFrame {
 		heureFTF.setBounds(555, 80, 150, 30);
 		abs.add(heureFTF);
 	
-		JButton applyB1 = new JButton(new ImageIcon("correct.png"));
+		JButton applyB1 = new JButton(new ImageIcon(getClass().getClassLoader().getResource("correct.png")));
 		applyB1.setBounds(710, 80, 50, 30);
 		applyB1.setBackground(Color.white);
 		applyB1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
@@ -1208,21 +1209,21 @@ public class GAC extends JFrame {
 		table.setEnabled(false);
 		scrollPane.setViewportView(table);
 		
-		JButton applyB2 = new JButton(new ImageIcon("correct.png"));
+		JButton applyB2 = new JButton(new ImageIcon(getClass().getClassLoader().getResource("correct.png")));
 		applyB2.setBounds(650, 165, 50, 30);
 		applyB2.setBackground(Color.white);
 		applyB2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		applyB2.setEnabled(false);
 		abs.add(applyB2);
 		
-		JButton validerB = new JButton(new ImageIcon("go.png"));
+		JButton validerB = new JButton(new ImageIcon(getClass().getClassLoader().getResource("go.png")));
 		validerB.setBounds(725, 390, 50, 50);
 		validerB.setBackground(Color.white);
 		validerB.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		validerB.setEnabled(false);
 		abs.add(validerB);
 		
-		JButton cancelB = new JButton(new ImageIcon("back.png"));
+		JButton cancelB = new JButton(new ImageIcon(getClass().getClassLoader().getResource("back.png")));
 		cancelB.setBounds(10, 390, 50, 50);
 		cancelB.setBackground(Color.white);
 		cancelB.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
@@ -1605,7 +1606,7 @@ public class GAC extends JFrame {
 		
 		GE1.add(classe1CB);
 		
-		JButton apply0Classe = new JButton(new ImageIcon("correct.png"));
+		JButton apply0Classe = new JButton(new ImageIcon(getClass().getClassLoader().getResource("correct.png")));
 		apply0Classe.setBounds(715, 115, 50, 30);
 		apply0Classe.setBackground(Color.white);
 		apply0Classe.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
@@ -1644,7 +1645,7 @@ public class GAC extends JFrame {
 		JTextField d = new JTextField();
 		JTextField idEleveTF = new JTextField();
 		
-		JButton applyClasse = new JButton(new ImageIcon("correct.png"));
+		JButton applyClasse = new JButton(new ImageIcon(getClass().getClassLoader().getResource("correct.png")));
 		applyClasse.setBounds(310, 180, 50, 30);
 		applyClasse.setBackground(Color.white);
 		applyClasse.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
@@ -1662,7 +1663,7 @@ public class GAC extends JFrame {
 		eleveCB.setBackground(Color.white);
 		GE1.add(eleveCB);
 		
-		JButton apply1Classe = new JButton(new ImageIcon("correct.png"));
+		JButton apply1Classe = new JButton(new ImageIcon(getClass().getClassLoader().getResource("correct.png")));
 		apply1Classe.setBounds(310, 220, 50, 30);
 		apply1Classe.setBackground(Color.white);
 		apply1Classe.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
@@ -1694,14 +1695,14 @@ public class GAC extends JFrame {
 		
 
 		
-		JButton startGE = new JButton(new ImageIcon("go.png"));
+		JButton startGE = new JButton(new ImageIcon(getClass().getClassLoader().getResource("go.png")));
 		startGE.setBounds(720,390,50,50);
 		startGE.setBackground(Color.white);
 		startGE.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
 		startGE.setEnabled(false);
 		GE1.add(startGE);
 		
-		JButton cancelGE = new JButton(new ImageIcon("back.png"));
+		JButton cancelGE = new JButton(new ImageIcon(getClass().getClassLoader().getResource("back.png")));
 		cancelGE.setBounds(10, 390, 50, 50);
 		cancelGE.setBackground(Color.white);
 		cancelGE.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
