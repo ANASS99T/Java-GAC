@@ -86,11 +86,12 @@ public class GAC extends JFrame {
 	}
 	
 	public GAC() {
+		
 		App.setIconImage(icon.getImage());
 		App.setSize(800, 500);
 		App.getContentPane().setLayout(null);
 		App.setVisible(true);
-		App.setResizable(true);
+		App.setResizable(false);
 		JMenu File = new JMenu("File");
 		JMenu Help = new JMenu("Help");
 		JMenu AboutUs = new JMenu("?");
@@ -1420,7 +1421,7 @@ public class GAC extends JFrame {
 					String heurD = heureDTFS.getText().toString();
 					String heurF = heureFTFS.getText().toString();
 					
-					//GestionAbsence.AjouterAbsence(idEleve, excuse, jour, heurD, heurF);
+					
 
 					//get les absences deja existes pour ne pas repeter la meme absence deux fois 
 					
@@ -1507,17 +1508,6 @@ public class GAC extends JFrame {
 					   }
 						catch(Exception exe) {	
 						}
-					
-//					if(!existe && hasCours)
-//					GestionAbsence.AjouterAbsence(idEleve, excuse, jour, heurD, heurF);
-//					else if(!hasCours)
-//					{
-//						JOptionPane.showMessageDialog(App, "cette classe n'a pas de cours");
-//					}
-//					else if(existe)
-//					{
-//						JOptionPane.showMessageDialog(App, "cette absenece deja existe");
-//					}
 					
 				
 				}
@@ -1702,11 +1692,7 @@ public class GAC extends JFrame {
 		
 		GE1.add(classe3CB);
 		
-//		JButton apply3Classe = new JButton(new ImageIcon("correct.png"));
-//		apply3Classe.setBounds(310, 300, 50, 30);
-//		apply3Classe.setBackground(Color.white);
-//		apply3Classe.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.white));
-//		GE1.add(apply3Classe);
+
 		
 		JButton startGE = new JButton(new ImageIcon("go.png"));
 		startGE.setBounds(720,390,50,50);
@@ -1819,19 +1805,12 @@ public class GAC extends JFrame {
 			}
 		});
 	
-//		apply3Classe.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				d.setText(classe3CB.getSelectedItem().toString());
-//			}
-//		});
-		
 		classe2CB.setEnabled(false);
 		applyClasse.setEnabled(false);
 		tranEleveRB.setSelected(false);
 		eleveCB.setEnabled(false);
 		apply1Classe.setEnabled(false);
 		classe3CB.setEnabled(false);
-		//apply3Classe.setEnabled(false);
 	
 		ButtonGroup bg = new ButtonGroup();
 		bg.add(addEleveRB);
@@ -1859,7 +1838,7 @@ public class GAC extends JFrame {
 					eleveCB.setEnabled(false);
 					apply1Classe.setEnabled(false);
 					classe3CB.setEnabled(false);
-					//apply3Classe.setEnabled(false);
+					
 				}
 				
 			}
@@ -1883,7 +1862,7 @@ public class GAC extends JFrame {
 					eleveCB.setEnabled(true);
 					apply1Classe.setEnabled(true);
 					classe3CB.setEnabled(true);
-					//apply3Classe.setEnabled(true);
+					
 					startGE.setEnabled(true);
 				}
 				
@@ -1952,7 +1931,7 @@ public class GAC extends JFrame {
 				eleveCB.setEnabled(false);
 				apply1Classe.setEnabled(false);
 				classe3CB.setEnabled(false);
-				//apply3Classe.setEnabled(false);
+				
 				startGE.setEnabled(false);
 				
 				
@@ -1981,7 +1960,7 @@ public class GAC extends JFrame {
 				eleveCB.setEnabled(true);
 				apply1Classe.setEnabled(true);
 				classe3CB.setEnabled(true);
-				//apply3Classe.setEnabled(true);
+			
 				startGE.setEnabled(true);
 			}
 		});
