@@ -1,11 +1,10 @@
 # Java-GAC  
 
-JAVA PROJECT : Gestion Administrative d'un Colege  
+JAVA PROJECT : Gestion Administrative d'un College  
 `How to use GAC interface`  
-`follow the steps :`  
 
-1. After clonning the folder make sure you are connected to phpmysql server.  
-2. In "Java prject/database" folder you will find the database file, you have to import it in the your phpmySql server
-by creating a new database with the same name "java_project" and import the datadase.  
-3. You need to add two libraries in the project (mysql-connector and rs2xml) you will find them in "Java project" folder
 
+Bienvenu sur l'applcation de `Gestion Administrative d'un College`
+L'objective de l'application est la gestion des cours, la gestion d'absence et aussi la gestion d'eleves 
+Pour compiler ou executer le programme,sur le dossier `data base` importer la base de donne sur votre serveur local(noter que la base de donne doit porter le nom `java_project`).Ouvrir le dossier `java project` sur votre editeur java (eclipse par exemple) et executer la class main.
+pour savoir comment utiliser l'application cliquer sur `Help (Menu bar) > Voir tutorial`, une fichier PDF va apparaître où il y a tous les informations sur l'application
